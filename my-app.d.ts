@@ -17,6 +17,7 @@ export type HomeStackNavigatorParamList = {
   Chat: undefined;
   Premium: undefined;
   Chatting: undefined;
+  EditProfile: undefined;
 };
 
 export type HomeScreenNavigationProp = NativeStackScreenProps<

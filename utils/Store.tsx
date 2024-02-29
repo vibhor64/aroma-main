@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import {  atom } from 'recoil';
 
 export const isSignedIn = atom({
     key: '0', // unique ID (with respect to other atoms/selectors)

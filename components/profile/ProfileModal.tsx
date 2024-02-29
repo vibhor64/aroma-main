@@ -1,4 +1,4 @@
-import { View, Text, Animated, TouchableOpacity } from 'react-native'
+import { View, Text, Animated, TouchableOpacity, Platform } from 'react-native'
 import React, { useRef, useState } from 'react'
 import Modal from 'react-native-modal';
 import { useRecoilState } from 'recoil';
@@ -36,7 +36,7 @@ const ProfileModal = (props: ModalScreenProps) => {
             animationOutTiming={200}
             useNativeDriver={true}
         >
-            <View style={{ flex: 1, backgroundColor: '#DCADAD', justifyContent: 'center', alignItems: 'center',}}>
+            {/* <View style={{ flex: 1, backgroundColor: '#DCADAD', justifyContent: 'center', alignItems: 'center',}}> */}
                 <Card
                     key={name}
                     name={name}
@@ -49,9 +49,9 @@ const ProfileModal = (props: ModalScreenProps) => {
                     titlSign={''}
                     {...dragHandlers}
                 />
-            </View>
-            <TouchableOpacity style={{width: '50%', alignSelf: 'center',}}>
-                <Text style={{paddingHorizontal: 20, paddingVertical: 10, backgroundColor: '#fff', borderRadius: 20, textAlign: 'center'}}>Close</Text>
+            {/* </View> */}
+            <TouchableOpacity style={{width: '50%', alignSelf: 'center', position: 'absolute', bottom: 10}} onPress={props.closeModal}>
+                <Text style={{paddingHorizontal: 20, paddingVertical: 10, backgroundColor: '#0089BA', borderRadius: Platform.OS === 'ios' ? 15 : 30, textAlign: 'center', fontFamily: 'Poppins_700Bold', fontSize: 16, color: '#fff'}}>Close</Text>
             </TouchableOpacity>
         </Modal>
     )

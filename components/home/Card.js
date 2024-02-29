@@ -6,21 +6,49 @@ import Choice from "./Choice";
 import { Fonts } from '../../fonts';
 
 const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, ...rest }) => {
+    const gender = 'Woman';
+    const zodiac = 'Aries';
+
+    const zodiacSign = {
+        "Aries": "♈",
+        "Taurus": "♉",
+        "Gemini": "♊",
+        "Cancer": "♋",
+        "Leo": "♌",
+        "Virgo": "♍",
+        "Libra": "♎",
+        "Scorpio": "♏",
+        "Sagittarius": "♐",
+        "Capricorn": "♑",
+        "Aquarius": "♒",
+        "Pisces": "♓"
+      }
 
     const personalityTraits = [
-        'Woman',
-        'Straight',
+        gender,
+        '🌏 Punjabi',
         '💪 Yes',
-        '🛐 Hindu',
         '👫 Long-term (Open to short-term)',
+        '☁️ Straight',
+        '🛐 Hindu',
         '🚬 No',
-        '☕ Yes',
         '🍾 Yes',
         '💊 No',
-        'Taurus',
+        `${zodiacSign[zodiac]} ${zodiac}`,
         '🗣️ Hindi, English, Japanese',
     ];
 
+    const Interests = [
+        'Cooking 🍳',
+        'Bathing 🚿',
+        'Chatting 🗣️',
+        'Winning 🥇',
+        'Dancing 💃',
+        'Reading 📖',
+        'Traveling ✈️',
+    ];
+
+    
 
     // Calculate the rotation of the card based on swipe gesture
     const rotate = Animated.multiply(swipe.x, titlSign).interpolate({
@@ -93,8 +121,8 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                 {/* Profile Main Details */}
                 <View style={styles.userContainer}>
                     <Text style={{ fontSize: 26, color: "#FFFFFF", fontFamily: "Poppins_800ExtraBold" }}>{name}, {age} </Text>
-                    <Text style={{ fontSize: 13, color: "#BCBCBC", fontFamily: "Poppins_600SemiBold" }}>
-                        IT, {location}, 5'9, Punjabi
+                    <Text style={{ fontSize: 13, color: "#BCBCBC", fontFamily: "Poppins_600SemiBold", maxWidth: '95%' }} numberOfLines={1} >
+                        IT, {location}, 168 cm, Delhi
                     </Text>
                 </View>
 
@@ -104,28 +132,13 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                         <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold" }}>About</Text>
                         <Text style={{ fontSize: 11, color: "#A0A0A0", fontFamily: "Poppins_600SemiBold" }}>
                             Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a moss.</Text>
-                        <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginTop: 10 }}>Interests</Text>
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                            <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>Cooking 🍳</Text>
-                            </View>
-
-                            <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>Bathing 🚿</Text>
-                            </View>
-
-                            <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>Chatting 🗣️</Text>
-                            </View>
-
-                            <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>Winning 🥇</Text>
-                            </View>
-
-                            <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>Sleeping 🛌</Text>
-                            </View>
-
+                        <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginTop: 10 }}>Preferences</Text>
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: -10 }}>
+                            {personalityTraits.map((item, index) => (
+                                <View key={index} style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
+                                    <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>{item}</Text>
+                                </View>
+                            ))}
                         </View>
                     </View>
                 </View>
@@ -152,22 +165,41 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                 )} */}
 
                 {/* {Platform.OS === 'ios' && ( */}
-                    <>
-                        <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginHorizontal: 20 }}>Preferences</Text>
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10, marginBottom: 20 }}>
-                            {personalityTraits.map((item, index) => (
-                                <View key={index} style={{ backgroundColor: '#fff', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                    <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}> {item}</Text>
-                                </View>
-                            ))}
-                        </View>
-                    </>
-                
+                <>
+                    <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginHorizontal: 20 }}>Interests</Text>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10, marginBottom: 20 }}>
+                        {Interests.map((item, index) => (
+                            <View key={index} style={{ backgroundColor: '#fff', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
+                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}> {item}</Text>
+                            </View>
+                        ))}
+                    </View>
+                </>
+
+                {/* Image 1 */}
                 <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, }}
+                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
                 />
 
                 {/* Prompt 1 */}
+                <View style={styles.promptFrame}>
+                    <View style={{ margin: 20,}}>
+                        <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
+                        <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
+                    </View>
+                </View>
+                
+                {/* Image 2 */}
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
+                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
+                />
+
+                {/* Image 3 */}
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
+                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
+                />
+
+                {/* Prompt 2 */}
                 <View style={styles.promptFrame}>
                     <View style={{ margin: 20 }}>
                         <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
@@ -175,9 +207,35 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                     </View>
                 </View>
 
+                {/* Image 4 */}
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
+                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
+                />
+
+                {/* Image 5 */}
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
+                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
+                />
+
+                {/* Prompt 3 */}
+                <View style={styles.promptFrame}>
+                    <View style={{ margin: 20 }}>
+                        <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
+                        <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
+                    </View>
+                </View>
+
+                {/* Image 6 */}
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
+                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
+                />
+
+
+
+
                 {/* Favourite Artists */}
-                <View>
-                    <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16, marginHorizontal: 20, color: '#E23DA0', marginTop: 20}}>Favourite Artists</Text>
+                {/* <View>
+                    <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16, marginHorizontal: 20, color: '#E23DA0', marginTop: 20 }}>Favourite Artists</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10 }}>
                         <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
                             <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>The Weeknd</Text>
@@ -200,7 +258,7 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                         </View>
 
                     </View>
-                </View>
+                </View> */}
 
                 {/* Dummy view for additional bottom space */}
                 <View style={{ height: 50, width: width * 0.9, }}></View>
@@ -260,7 +318,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 20,
         position: 'relative',
-        top: -5,
+        top: -25,
         zIndex: 10,
         shadowColor: "#000000",
         shadowOffset: {
@@ -269,7 +327,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.17,
         shadowRadius: 3.05,
-        elevation: 4
+        elevation: 4,
+        marginBottom: 20
     },
     quickInfo: {
         position: 'relative',

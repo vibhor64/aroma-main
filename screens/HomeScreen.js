@@ -40,7 +40,7 @@ export default function HomeScreen() {
             const dx = gestureState.dx;
 
             // Only allow the pan responder to activate if the user swipes in the x-direction with a force greater than 10 pixels
-            if (Math.abs(dx) > Platform.OS === 'android'? 10 : 10) {
+            if (Math.abs(dx) > (Platform.OS === 'android'? 0 : 10)) {
                 return true;
             }
             else if (!users.length) {

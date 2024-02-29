@@ -9,10 +9,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FeatureCards from '../components/profile/FeatureCards';
 import FeatureTable from '../components/profile/FeatureTable';
 import ProfileModal from '../components/profile/ProfileModal';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const ProfileScreen = () => {
+
+  const navigation = useNavigation();
 
   const [showProfile, setShowProfile] = useState(false);
 
@@ -64,10 +67,11 @@ const ProfileScreen = () => {
       <ScrollView style={{ flex: 1 }}>
         {/* Profile section */}
         <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 20, }}>
-          <TouchableOpacity activeOpacity={0.5}
+          <TouchableOpacity activeOpacity={0.5} onPress={()=>navigation.navigate('EditProfile')}
             style={{ position: 'absolute', top: 10, right: 100, zIndex: 10, backgroundColor: 'white', borderRadius: 50, padding: 3, overflow: 'hidden' }} >
             <PencilSquareIcon color="black" size={35} />
           </TouchableOpacity>
+          
           <LinearGradient
             start={{ x: 0.0, y: 0.0 }} end={{ x: 1.0, y: 1.0 }}
             locations={[0, 0.5, 0.6]}
@@ -82,7 +86,7 @@ const ProfileScreen = () => {
           </LinearGradient>
           <Text style={{ fontFamily: 'Poppins_500Medium', fontSize: 14, marginTop: 10 }}>{userData[0].completed} complete</Text>
           <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 20, marginTop: -7 }}>{userData[0].name}, {userData[0].age} </Text>
-          <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} activeOpacity={0.4}>
+          <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} activeOpacity={0.4} onPress={()=>navigation.navigate('EditProfile')}>
             <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: 'white', backgroundColor: "#FFC75F", paddingHorizontal: 24, paddingVertical: 5, borderRadius: Platform.OS === 'ios' ? 15 : 30, marginTop: 5, overflow: 'hidden' }}>Edit Profile</Text>
             <View style={{ height: 9, width: 9, borderRadius: 50, backgroundColor: "#E42828", position: 'absolute', top: 5, right: 0 }}></View>
           </TouchableOpacity>
