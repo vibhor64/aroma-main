@@ -5,50 +5,53 @@ import { Fragment, useCallback } from "react";
 import Choice from "./Choice";
 import { Fonts } from '../../fonts';
 
-const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, ...rest }) => {
+const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
     const gender = 'Woman';
     const zodiac = 'Aries';
+    console.log(profileData);
 
-    const zodiacSign = {
-        "Aries": "♈",
-        "Taurus": "♉",
-        "Gemini": "♊",
-        "Cancer": "♋",
-        "Leo": "♌",
-        "Virgo": "♍",
-        "Libra": "♎",
-        "Scorpio": "♏",
-        "Sagittarius": "♐",
-        "Capricorn": "♑",
-        "Aquarius": "♒",
-        "Pisces": "♓"
-      }
+    const { name, age, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6 } = profileData
 
-    const personalityTraits = [
-        gender,
-        '🌏 Punjabi',
-        '💪 Yes',
-        '👫 Long-term (Open to short-term)',
-        '☁️ Straight',
-        '🛐 Hindu',
-        '🚬 No',
-        '🍾 Yes',
-        '💊 No',
-        `${zodiacSign[zodiac]} ${zodiac}`,
-        '🗣️ Hindi, English, Japanese',
-    ];
+    // const zodiacSign = {
+    //     "Aries": "♈",
+    //     "Taurus": "♉",
+    //     "Gemini": "♊",
+    //     "Cancer": "♋",
+    //     "Leo": "♌",
+    //     "Virgo": "♍",
+    //     "Libra": "♎",
+    //     "Scorpio": "♏",
+    //     "Sagittarius": "♐",
+    //     "Capricorn": "♑",
+    //     "Aquarius": "♒",
+    //     "Pisces": "♓"
+    //   }
 
-    const Interests = [
-        'Cooking 🍳',
-        'Bathing 🚿',
-        'Chatting 🗣️',
-        'Winning 🥇',
-        'Dancing 💃',
-        'Reading 📖',
-        'Traveling ✈️',
-    ];
+    // const personalityTraits = [
+    //     gender,
+    //     '🌏 Punjabi',
+    //     '💪 Yes',
+    //     '👫 Long-term (Open to short-term)',
+    //     '☁️ Straight',
+    //     '🛐 Hindu',
+    //     '🚬 No',
+    //     '🍾 Yes',
+    //     '💊 No',
+    //     `${zodiacSign[zodiac]} ${zodiac}`,
+    //     '🗣️ Hindi, English, Japanese',
+    // ];
 
-    
+    // const Interests = [
+    //     'Cooking 🍳',
+    //     'Bathing 🚿',
+    //     'Chatting 🗣️',
+    //     'Winning 🥇',
+    //     'Dancing 💃',
+    //     'Reading 📖',
+    //     'Traveling ✈️',
+    // ];
+
+
 
     // Calculate the rotation of the card based on swipe gesture
     const rotate = Animated.multiply(swipe.x, titlSign).interpolate({
@@ -176,28 +179,34 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                     </View>
                 </>
 
-                {/* Image 1 */}
-                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
-                />
+                {/* Image 2 */}
+                {img2 && (
+                    <Image source={img2}
+                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                    />
+                )}
 
                 {/* Prompt 1 */}
                 <View style={styles.promptFrame}>
-                    <View style={{ margin: 20,}}>
+                    <View style={{ margin: 20, }}>
                         <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
                         <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
                     </View>
                 </View>
-                
-                {/* Image 2 */}
-                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
-                />
 
                 {/* Image 3 */}
-                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
-                />
+                {img3 && (
+                    <Image source={img3}
+                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                    />
+                )}
+
+                {/* Image 4 */}
+                {img4 && (
+                    <Image source={img4}
+                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                    />
+                )}
 
                 {/* Prompt 2 */}
                 <View style={styles.promptFrame}>
@@ -207,15 +216,12 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                     </View>
                 </View>
 
-                {/* Image 4 */}
-                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
-                />
-
                 {/* Image 5 */}
-                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
-                />
+                {img5 && (
+                    <Image source={img5}
+                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                    />
+                )}
 
                 {/* Prompt 3 */}
                 <View style={styles.promptFrame}>
@@ -226,12 +232,12 @@ const Card = ({ name, age, location, distance, image, isFirst, swipe, titlSign, 
                 </View>
 
                 {/* Image 6 */}
-                <Image source={{ uri: 'https://images.unsplash.com/photo-1631947430066-48c30d57b943?q=80&w=1916&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-                    style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20}}
-                />
 
-
-
+                {img6 && (
+                    <Image source={img6}
+                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                    />
+                )}
 
                 {/* Favourite Artists */}
                 {/* <View>

@@ -13,6 +13,53 @@ const { width, height } = Dimensions.get("screen");
 
 export default function HomeScreen() {
 
+    const gender = 'Woman';
+    const zodiac = 'Aries';
+    const img2 = require("../assets/images/user8.jpg");
+    const img3 = require("../assets/images/user2.jpg");
+    const img4 = require("../assets/images/user3.jpg");
+    const img5 = require("../assets/images/user5.jpg");
+    const img6 = require("../assets/images/user7.jpg");
+
+    const zodiacSign = {
+        "Aries": "♈",
+        "Taurus": "♉",
+        "Gemini": "♊",
+        "Cancer": "♋",
+        "Leo": "♌",
+        "Virgo": "♍",
+        "Libra": "♎",
+        "Scorpio": "♏",
+        "Sagittarius": "♐",
+        "Capricorn": "♑",
+        "Aquarius": "♒",
+        "Pisces": "♓"
+      }
+
+    const personalityTraits = [
+        gender,
+        '🌏 Punjabi',
+        '💪 Yes',
+        '👫 Long-term (Open to short-term)',
+        '☁️ Straight',
+        '🛐 Hindu',
+        '🚬 No',
+        '🍾 Yes',
+        '💊 No',
+        `${zodiacSign[zodiac]} ${zodiac}`,
+        '🗣️ Hindi, English, Japanese',
+    ];
+
+    const Interests = [
+        'Cooking 🍳',
+        'Bathing 🚿',
+        'Chatting 🗣️',
+        'Winning 🥇',
+        'Dancing 💃',
+        'Reading 📖',
+        'Traveling ✈️',
+    ];
+
     const [isModalVisible, setModalVisible] = useState(false);
 
     const toggleModal = () => {
@@ -54,8 +101,22 @@ export default function HomeScreen() {
         // Handle card movement while dragging
         onPanResponderMove: (_, { dx, dy, y0 }) => {
             swipe.setValue({ x: dx, y: 0 });
-            // titlSign.setValue(y0 > (height * 0.9) / 2 ? 1 : -1)
+            // tit lSign.setValue(y0 > (height * 0.9) / 2 ? 1 : -1)
         },
+
+        // onPanResponderMove: (_, { dx, dy }) => {
+        //     // Allow movement only if the horizontal movement is greater than the vertical movement
+        //     const isHorizontalSwipe = Math.abs(dx) > Math.abs(dy);
+          
+        //     if (isHorizontalSwipe) {
+        //       // Horizontal swipe
+        //       swipe.setValue({ x: dx, y: 0 });
+        //     } else {
+        //       // Vertical swipe or diagonal swipe
+        //       swipe.setValue({ x: 0, y: 0 });
+        //     }
+        //   },
+          
 
         onPanResponderStart: (event, gestureState) => {
             // Check the value of the `dx` property
@@ -118,6 +179,8 @@ export default function HomeScreen() {
 
     }, [removeTopCard, swipe.x]);
 
+    
+
     // Load fonts
     let [fontsLoaded] = useFonts({
         'Italiana': require('../assets/fonts/Italiana.ttf'),
@@ -153,15 +216,17 @@ export default function HomeScreen() {
                     users.map(({ name, image, location, distance, age }, index) => {
                         const isFirst = index == 0;
                         const dragHandlers = isFirst ? panResponder.panHandlers : {};
+                        const profileData = {name, location, distance, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
 
                         return (
                             <Card
                                 key={name}
-                                name={name}
-                                location={location}
-                                distance={distance}
-                                age={age}
-                                image={image}
+                                // name={name}
+                                // location={location}
+                                // distance={distance}
+                                // age={age}
+                                // image={image}
+                                profileData={profileData}
                                 isFirst={isFirst}
                                 swipe={swipe}
                                 titlSign={titlSign}

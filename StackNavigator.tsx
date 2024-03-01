@@ -22,6 +22,8 @@ import InterestsScreen from './screens/login/InterestsScreen';
 import PromptsScreen from './screens/login/PromptsScreen';
 import OutlookScreen from './screens/login/OutlookScreen';
 import EditProfileScreen from './screens/EditProfileScreen';
+import Preferences from './components/profile/PreferencesScreen';
+import Interests from './components/profile/InterestsScreen';
 
 const Stack = createNativeStackNavigator<HomeStackNavigatorParamList>();
 const Tab = createBottomTabNavigator<HomeStackNavigatorParamList>();
@@ -100,6 +102,8 @@ export default function StackNavigator() {
                     </Stack.Screen>
                     <Stack.Screen name="Chatting" component={Chatting} />
                     <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+                    <Stack.Screen name="Preferences" component={Preferences} />
+                    <Stack.Screen name="EditInterests" component={Interests} />
                 </>
             ) : (
                 <Stack.Group screenOptions={{ headerShown: false}}>

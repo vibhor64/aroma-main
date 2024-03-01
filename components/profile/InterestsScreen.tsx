@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { userState } from '../../utils/Store';
 import { useNavigation } from '@react-navigation/native';
 
-const InterestsScreen = () => {
+const Interests = () => {
   const navigation = useNavigation();
   const [user, setUser] = useRecoilState(userState);
   const [numberOfInterests, setNumberOfInterests] = React.useState(0)
@@ -216,8 +216,8 @@ const InterestsScreen = () => {
         </View>
       </ScrollView>
           {interests.length > 0 && (
-            <TouchableOpacity activeOpacity={0.4} style={{position: 'absolute', bottom: 20, marginTop: 10, alignSelf: 'center', width: '90%', }} onPress={() => { navigation.navigate('Prompts') }}>
-              <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#DCADAD', borderRadius: Platform.OS == 'android' ? 30 : 20, textAlign: 'center', overflow: 'hidden', }}>Next</Text>
+            <TouchableOpacity activeOpacity={0.4} style={{position: 'absolute', bottom: 20, marginTop: 10, alignSelf: 'center', width: '90%', }} onPress={() => { navigation.goBack() }}>
+              <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#DCADAD', borderRadius: Platform.OS == 'android' ? 30 : 20, textAlign: 'center', overflow: 'hidden', }}>Back</Text>
             </TouchableOpacity>
           )}
     </>
@@ -225,4 +225,4 @@ const InterestsScreen = () => {
   )
 }
 
-export default InterestsScreen
+export default Interests

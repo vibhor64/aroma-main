@@ -206,13 +206,13 @@ const EditProfile = () => {
                         <PlusIcon color="#fff" size={25} style={{ alignSelf: 'flex-end' }} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity activeOpacity={0.4} style={{paddingVertical: 10, paddingHorizontal: 20, backgroundColor: '#FFC75F', borderRadius: 10, overflow: 'hidden', marginTop: 20, flexDirection: 'row', elevation: 3, shadowColor: "#000000", shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.17, shadowRadius: 2.54,}}>
+                    <TouchableOpacity activeOpacity={0.4} style={{paddingVertical: 10, paddingHorizontal: 20, backgroundColor: '#FFC75F', borderRadius: 10, overflow: 'hidden', marginTop: 20, flexDirection: 'row', elevation: 3, shadowColor: "#000000", shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.17, shadowRadius: 2.54,}} onPress={()=>navigation.navigate('Preferences')}>
                         <Text style={{fontFamily: 'Poppins_600SemiBold', color: '#fff', fontSize: 12, }}>Edit Preferences</Text>
                         <ChevronDoubleRightIcon size={20} color={'#fff'} style={{marginLeft: 'auto'}}/>
                     </TouchableOpacity>
 
                     
-                    <TouchableOpacity activeOpacity={0.4} style={{paddingVertical: 10, paddingHorizontal: 20, backgroundColor: '#0089BA', borderRadius: 10, overflow: 'hidden', marginTop: 20, flexDirection: 'row', elevation: 3, shadowColor: "#000000", shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.17, shadowRadius: 2.54,}}>
+                    <TouchableOpacity activeOpacity={0.4} style={{paddingVertical: 10, paddingHorizontal: 20, backgroundColor: '#0089BA', borderRadius: 10, overflow: 'hidden', marginTop: 20, flexDirection: 'row', elevation: 3, shadowColor: "#000000", shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.17, shadowRadius: 2.54,}} onPress={()=>navigation.navigate('EditInterests')}>
                         <Text style={{fontFamily: 'Poppins_600SemiBold', color: '#fff', fontSize: 12, }}>Edit Interests</Text>
                         <ChevronDoubleRightIcon size={20} color={'#fff'} style={{marginLeft: 'auto'}}/>
                     </TouchableOpacity>

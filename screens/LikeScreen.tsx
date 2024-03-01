@@ -1,12 +1,13 @@
 import { PanResponder, View, Animated, Dimensions, StatusBar, Text, TouchableOpacity, ScrollView, Image, FlatList, Platform } from 'react-native';
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { users as usersArray } from "../utils/data";
+// import { users as usersArray } from "../utils/data";
+import { newData } from '../utils/newData';
 import Card from '../components/home/Card';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useFonts } from 'expo-font';
+// import { useFonts } from 'expo-font';
 import { AdjustmentsHorizontalIcon as Filter } from "react-native-heroicons/outline";
 // import { Fonts } from '../fonts';
-import Loader from '../Loader';
+
 
 const { width, height } = Dimensions.get("screen");
 
@@ -19,7 +20,7 @@ export default function HomeScreen() {
   // if (!fontsLoaded) {
   //   return null;
   // }
-
+  // const {name} = newData;
   const numberOfProposals = 4;
   const numberOfLikes = 3;
 
@@ -77,7 +78,7 @@ export default function HomeScreen() {
         <View style={{ width: width * 0.9, borderRadius: 20, backgroundColor: '#fff', height: height * 0.7, }}>
 
           {/* Proposal Cards */}
-          {numberOfProposals > 0 && (
+          {/* {numberOfProposals > 0 && (
             <>
               <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#C08484', fontSize: 12, margin: 20, marginBottom: 0 }}>{numberOfProposals} · Proposals</Text>
               <FlatList
@@ -88,7 +89,27 @@ export default function HomeScreen() {
                 showsHorizontalScrollIndicator={false}
               />
             </>
+          )} */}
+
+
+          {/* Proposal Cards */}
+          {newData.length>0 && (
+            <>
+            <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#C08484', fontSize: 12, margin: 20, marginBottom: 0 }}>{newData.length} · Proposals</Text>
+            <FlatList
+              data={newData}
+              keyExtractor={(item, index) => index.toString()} // Use index as the key, as items don't have a 'key' property
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) =>  renderImage(Array.from({ length: newData.length }, (_, index) => index))}
+            />
+          </>
           )}
+
+
+
+
+
 
           {/* Like Cards */}
           {numberOfLikes > 0 && (
