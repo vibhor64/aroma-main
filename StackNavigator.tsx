@@ -55,7 +55,7 @@ export default function StackNavigator() {
                                         },
                                         shadowOpacity: 0.21,
                                         shadowRadius: 6.65,
-                                        elevation: 9
+                                        elevation: 20,
                                     }
                                 }}>
 

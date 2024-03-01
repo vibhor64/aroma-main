@@ -59,7 +59,7 @@ const ProfileScreen = () => {
       </View>
 
       <ScrollView style={{ flex: 1, marginHorizontal: 20 }} showsVerticalScrollIndicator={false}>
-        <Text style={{ fontFamily: 'Poppins_900Black', fontSize: 35, color: 'white' }}>Become Our Sponsor</Text>
+        <Text style={{ fontFamily: 'Poppins_900Black', fontSize: 35, color: 'white', marginBottom: 10 }}>Become Our Sponsor</Text>
 
         <FlatList
           data={data} 

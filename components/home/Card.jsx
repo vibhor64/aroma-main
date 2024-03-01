@@ -6,8 +6,6 @@ import Choice from "./Choice";
 import { Fonts } from '../../fonts';
 
 const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
-    const gender = 'Woman';
-    const zodiac = 'Aries';
     // console.log(profileData);
 
     const { name, age, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6 } = profileData
@@ -243,7 +241,7 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
 
                 {img6 && (
                     <Image source={img6}
-                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom:0 }}
                     />
                 )}
 
@@ -275,7 +273,7 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
                 </View> */}
 
                 {/* Dummy view for additional bottom space */}
-                <View style={{ height: 50, width: width * 0.9, }}></View>
+                {/* <View style={{ height: 10, width: width * 0.9, }}></View> */}
 
 
                 {isFirst && renderChoice()}
@@ -291,6 +289,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 70,
         borderRadius: 20,
+        overflow: 'hidden',        
         backgroundColor: '#ECECEC',
         // padding: 4
     },
