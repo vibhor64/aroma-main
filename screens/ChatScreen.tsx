@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList, Image, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, Image, ScrollView, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 // import Loader from '../Loader';
@@ -8,6 +8,7 @@ import ChatCard from '../components/chat/chatCard';
 import ExtendMatchModal from '../components/chat/ExtendMatchModal';
 
 
+const { width, height } = Dimensions.get("screen");
 
 const ChatScreen = () => {
 
@@ -129,7 +130,7 @@ const ChatScreen = () => {
         <Text style={{ fontFamily: 'Poppins_700Bold', color: '#000', fontSize: 14, marginLeft: 20, marginTop: 20 }}>Recents</Text>
       </View>
 
-      <View style={{ marginHorizontal: 20, flex: 1, marginBottom: 100 }}>
+      <View style={{ marginHorizontal: 20, flex: 1, marginBottom: height*0.1 }}>
         {/* Map through the chatData and render ChatCard for each item */}
         {/* {chatData.map((chatItem) => (
             <ChatCard key={chatItem.id} data={chatItem} />

@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, Platform, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TextInput, Platform, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, FlatList, TouchableOpacity, Animated } from 'react-native';
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RouteProp, useNavigation } from '@react-navigation/native';
@@ -188,9 +188,39 @@ const messages = [
     },
 ]
 
-
-
 const Chatting: React.FC<ChattingProps> = ({ route }) => {
+    const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const animatedKeyboardHeight = useRef(new Animated.Value(0)).current;
+
+  function onKeyboardShow(event: KeyboardEvent) {
+    Animated.timing(animatedKeyboardHeight, {
+      toValue: event.endCoordinates.height,
+      duration: 300, // Adjust the duration as needed
+      useNativeDriver: false, // Set to false because 'height' is not supported by native driver
+    }).start();
+  }
+
+  function onKeyboardHide() {
+    Animated.timing(animatedKeyboardHeight, {
+      toValue: 0,
+      duration: 3, // Adjust the duration as needed
+      useNativeDriver: false,
+    }).start();
+  }
+
+  useEffect(() => {
+    const onShow = Keyboard.addListener('keyboardDidShow', onKeyboardShow);
+    const onHide = Keyboard.addListener('keyboardDidHide', onKeyboardHide);
+
+    return () => {
+      onShow.remove();
+      onHide.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    setKeyboardHeight(animatedKeyboardHeight);
+  }, [animatedKeyboardHeight]);
     // Access the data from the route.params
     const { data } = route.params;
     const navigation = useNavigation();
@@ -221,7 +251,7 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
     //     flatListRef.current?.scrollToEnd({ animated: true });
     // }, []);
     const scrollToBottom = () => {
-        flatListRef.current?.scrollToEnd({ animated: true });
+        flatListRef.current?.scrollToEnd({ animated: true, });
     };
 
     useLayoutEffect(() => {
@@ -238,6 +268,7 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
     }, [scrollToBottom]);
 
     return (
+        <>
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             {/* Header */}
             <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', paddingBottom: 10, paddingTop: 5, shadowColor: "#000000", shadowOffset: { width: 0, height: 1, }, shadowOpacity: 0.17, shadowRadius: 1.51, elevation: 4, backgroundColor: 'white', }}>
@@ -258,7 +289,7 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                     data={messages}
                     ref={flatListRef}
                     keyExtractor={(item) => item.timestamp}
-                    contentContainerStyle={{ marginTop: 10, }}
+                    contentContainerStyle={{ marginTop: 10,}}
                     renderItem={({ item: message }) =>
                         message.sender === 'bot' ? (
                             <RecieverMessage key={message.timestamp} message={message} />
@@ -266,11 +297,11 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                             <SenderMessage key={message.timestamp} message={message} />
                         )
                     }
-                    ListFooterComponent={() => <View style={{ height: 75, }} />}
+                    ListFooterComponent={() => <View style={{ height: Platform.OS === 'ios' ? 55 : 75, }} />}
                 />
             </TouchableWithoutFeedback>
 
-            <View style={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 25 : 0, width: '100%', flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', }}>
+            <View style={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 15 : 0, width: '100%', flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', }}>
                 <CameraIcon size={30} color={"#000"} style={{ marginLeft: 10 }} />
                 <TextInput
                     style={{ height: 'auto', borderColor: 'gray', borderWidth: 0, borderRadius: 7, margin: 10, backgroundColor: '#EDEDED', padding: 10, fontFamily: 'Poppins_300Light', fontSize: 14, color: 'black', flex: 1 }}
@@ -279,12 +310,19 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                     onChangeText={(text) => setText(text)}
                     onSubmitEditing={() => sendMessage()}
                     value={text}
+                    
                 />
                 <PaperAirplaneIcon size={30} color={"#000"} style={{ marginRight: 10 }} onPress={() => sendMessage()} />
             </View>
             {/* </KeyboardAvoidingView> */}
             <ChatDetailsModal isVisible={isModalVisible} closeModal={toggleModal}/>
+            
+
         </SafeAreaView>
+            {Platform.OS === 'ios' && (
+            <Animated.View style={{ height: keyboardHeight, backgroundColor: 'white' }} />
+            )}
+            </>
     );
 };
 
