@@ -92,7 +92,7 @@ const ChatScreen = () => {
   //   return <Loader />;
   // }
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, }}>
       {/* Header */}
       <View style={{ marginVertical: 10, flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
         <Text

@@ -10,6 +10,7 @@ import Loader from '../Loader';
 import RecieverMessage from '../components/chat/RecieverMessage';
 import SenderMessage from '../components/chat/SenderMessage';
 import ChatDetailsModal from '../components/chat/ChatDetailsModal';
+import { PlusCircleIcon } from 'react-native-heroicons/solid';
 
 // Define the params type for the 'Chatting' route
 type ChattingParams = {
@@ -269,15 +270,22 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
 
     return (
         <>
-        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#e9effd' }}>
             {/* Header */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', paddingBottom: 10, paddingTop: 5, shadowColor: "#000000", shadowOffset: { width: 0, height: 1, }, shadowOpacity: 0.17, shadowRadius: 1.51, elevation: 4, backgroundColor: 'white', }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', shadowColor: "#000000", shadowOffset: { width: 0, height: 1, }, shadowOpacity: 0.17, shadowRadius: 1.51, elevation: 4, backgroundColor: '#a9b6d9', borderRadius: 20, paddingVertical: 15, borderTopRightRadius: 0, borderTopLeftRadius: 0, overflow: 'hidden'}}>
 
-                <ArrowLeftIcon size={30} onPress={() => navigation.goBack()} style={{ marginLeft: 10, marginTop: 10 }} color={"black"} />
-                <Image source={data.image} style={{ width: 40, height: 40, borderRadius: 50, marginTop: 10, marginLeft: 10 }} />
-                <Text style={{ marginLeft: 15, fontFamily: 'Poppins_700Bold', fontSize: 20, marginTop: 10 }}>{data.name}</Text>
+                {/* <ArrowLeftIcon size={25} onPress={() => navigation.goBack()} style={{ marginLeft: 15, marginTop: 8 }} color={"white"} /> */}
+                <TouchableOpacity onPress={() => navigation.goBack()} >
+
+                <Image source={require('../assets/icons/back.png')} style={{ width: 20, height: 20, marginTop: 10, marginLeft: 18, tintColor: 'white' }} />
+                </TouchableOpacity>
+                <Image source={data.image} style={{ width: 36, height: 36, borderRadius: 50, marginTop: 10, marginLeft: 14 }} />
+                <View>
+                <Text style={{ marginLeft: 15, fontFamily: 'Poppins_700Bold', fontSize: 20, marginTop: 10, color: 'white' }} numberOfLines={1}>{data.name}</Text>
+                {/* <Text style={{ marginLeft: 16, fontFamily: 'Poppins_400Regular', fontSize: 10,  color: '#3b4875', position: 'absolute', bottom: -10 }} numberOfLines={1}>typing</Text> */}
+                </View>
                 <TouchableOpacity style={{ marginLeft: 'auto', marginRight: 10, marginTop: 10 }} onPress={toggleModal}>
-                    <EllipsisVerticalIcon color={"#999999"} size={30} />
+                    <EllipsisVerticalIcon color={"#fff"} size={25} />
                 </TouchableOpacity>
 
             </View>
@@ -289,30 +297,35 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                     data={messages}
                     ref={flatListRef}
                     keyExtractor={(item) => item.timestamp}
-                    contentContainerStyle={{ marginTop: 10,}}
+                    contentContainerStyle={{ marginTop: 10, }}
                     renderItem={({ item: message }) =>
                         message.sender === 'bot' ? (
-                            <RecieverMessage key={message.timestamp} message={message} />
+                            <RecieverMessage key={message.timestamp} message={message} timestamp={message.timestamp} />
                         ) : (
-                            <SenderMessage key={message.timestamp} message={message} />
+                            <SenderMessage key={message.timestamp} message={message} timestamp={message.timestamp} />
                         )
                     }
                     ListFooterComponent={() => <View style={{ height: Platform.OS === 'ios' ? 55 : 75, }} />}
                 />
             </TouchableWithoutFeedback>
 
-            <View style={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 15 : 0, width: '100%', flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', }}>
-                <CameraIcon size={30} color={"#000"} style={{ marginLeft: 10 }} />
+            {/* Input */}
+            <View style={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 15 : 0, width: '100%',backgroundColor: 'transparent',}}>
+                <View style={{ height: 50, borderColor: 'gray', borderWidth: 0, borderRadius: 20, margin: 10, backgroundColor: '#f7f8fd', padding: 10, flex: 1,  flexDirection: 'row', width: '90%',alignItems: 'center', marginHorizontal: 20, justifyContent: 'space-around', marginTop: 0}}>
+
+                {/* <CameraIcon size={30} color={"#000"} style={{ marginLeft: 10 }} /> */}
+                <PlusCircleIcon size={35} color={"#527bf1"} style={{ marginLeft: 6 }} />
                 <TextInput
-                    style={{ height: 'auto', borderColor: 'gray', borderWidth: 0, borderRadius: 7, margin: 10, backgroundColor: '#EDEDED', padding: 10, fontFamily: 'Poppins_300Light', fontSize: 14, color: 'black', flex: 1 }}
-                    placeholder='Send Message'
-                    placeholderTextColor={'#fff'}
+                    style={{ height: 40, borderColor: 'gray', borderWidth: 0, borderRadius: 7, margin: 10, padding: 1, fontFamily: 'Poppins_400Regular', fontSize: 14, color: 'black', flex: 1 }}
+                    placeholder='Message...'
+                    placeholderTextColor={'#9fa1ae'}
                     onChangeText={(text) => setText(text)}
                     onSubmitEditing={() => sendMessage()}
                     value={text}
                     
-                />
-                <PaperAirplaneIcon size={30} color={"#000"} style={{ marginRight: 10 }} onPress={() => sendMessage()} />
+                    />
+                <PaperAirplaneIcon size={27} color={"#9ca2ae"} style={{ marginRight: 10, padding: 5 }} onPress={() => sendMessage()} />
+                    </View>
             </View>
             {/* </KeyboardAvoidingView> */}
             <ChatDetailsModal isVisible={isModalVisible} closeModal={toggleModal}/>

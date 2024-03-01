@@ -29,7 +29,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ data }) => {
         return <Loader />;
     }
     return (
-        <TouchableOpacity activeOpacity={0.5} style={{ backgroundColor: 'white', padding: 10, marginVertical: 5, paddingVertical: 16, borderRadius: 8, }}
+        <TouchableOpacity activeOpacity={0.5} style={{ backgroundColor: 'white', padding: 10, marginVertical: 5, paddingVertical: 16, borderRadius: 15, }}
         onPress={() => navigation.navigate('Chatting', { data: data })}>
             <View style={{ flexDirection: 'row', }}>
                 <Image source={data.image} style={{ width: 53, height: 53, borderRadius: 50 }} />
