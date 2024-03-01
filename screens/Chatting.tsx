@@ -270,7 +270,7 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                 />
             </TouchableWithoutFeedback>
 
-            <View style={{ position: 'absolute', bottom: Platform.OS === 'ios' ? -5 : 0, width: '100%', flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', }}>
+            <View style={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 25 : 0, width: '100%', flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', }}>
                 <CameraIcon size={30} color={"#000"} style={{ marginLeft: 10 }} />
                 <TextInput
                     style={{ height: 'auto', borderColor: 'gray', borderWidth: 0, borderRadius: 7, margin: 10, backgroundColor: '#EDEDED', padding: 10, fontFamily: 'Poppins_300Light', fontSize: 14, color: 'black', flex: 1 }}

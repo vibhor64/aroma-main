@@ -8,7 +8,7 @@ import { Fonts } from '../../fonts';
 const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
     const gender = 'Woman';
     const zodiac = 'Aries';
-    console.log(profileData);
+    // console.log(profileData);
 
     const { name, age, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6 } = profileData
 
@@ -115,13 +115,20 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
         <Animated.View
             style={[styles.container, isFirst && animatedCardStyle]} {...rest}>
 
-            <ScrollView style={{ width: width * 0.9, height: height * 0.78, borderRadius: 0 }} showsVerticalScrollIndicator={false}
-                alwaysBounceVertical={false}>
+                <View style={{zIndex: -1, position: 'absolute', width: width * 0.9, height: height * 0.6, borderRadius: 0,}}>
+
                 <View style={{ width: width * 0.9, height: height * 0.6, borderRadius: 0, }}>
                     <Image source={image} style={styles.image} resizeMode="cover" />
                 </View>
 
+                </View>
                 {/* Profile Main Details */}
+
+
+            <ScrollView style={{ width: width * 0.9, height: height * 0.78, borderRadius: 0, }} showsVerticalScrollIndicator={false}
+                alwaysBounceVertical={false}>
+                
+                <View style={{ height: 500}}></View>
                 <View style={styles.userContainer}>
                     <Text style={{ fontSize: 26, color: "#FFFFFF", fontFamily: "Poppins_800ExtraBold" }}>{name}, {age} </Text>
                     <Text style={{ fontSize: 13, color: "#BCBCBC", fontFamily: "Poppins_600SemiBold", maxWidth: '95%' }} numberOfLines={1} >
@@ -129,6 +136,7 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
                     </Text>
                 </View>
 
+                <View style={{backgroundColor: '#dadada'}}>
                 {/* Main Frame */}
                 <View style={styles.mainFrame}>
                     <View style={{ margin: 20 }}>
@@ -271,6 +279,7 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
 
 
                 {isFirst && renderChoice()}
+                </View>
             </ScrollView>
 
         </Animated.View>
@@ -357,11 +366,15 @@ const styles = StyleSheet.create({
     },
     likeContainer: {
         left: 45,
-        transform: [{ rotate: '-30deg' }]
+        transform: [{ rotate: '-30deg' }],
+        top: -200,
+        zIndex: 100
     },
     nopeContainer: {
         right: 45,
-        transform: [{ rotate: '30deg' }]
+        transform: [{ rotate: '30deg' }],
+        top: -200,
+        zIndex: 100
     },
 })
 

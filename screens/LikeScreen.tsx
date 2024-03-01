@@ -77,21 +77,7 @@ export default function HomeScreen() {
 
         <View style={{ width: width * 0.9, borderRadius: 20, backgroundColor: '#fff', height: height * 0.7, }}>
 
-          {/* Proposal Cards */}
-          {/* {numberOfProposals > 0 && (
-            <>
-              <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#C08484', fontSize: 12, margin: 20, marginBottom: 0 }}>{numberOfProposals} · Proposals</Text>
-              <FlatList
-                data={data}
-                renderItem={({ item }) => renderImage(Array.from({ length: numberOfProposals }, (_, index) => index))}
-                keyExtractor={(item) => item.key}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-              />
-            </>
-          )} */}
-
-
+          
           {/* Proposal Cards */}
           {newData.length>0 && (
             <>

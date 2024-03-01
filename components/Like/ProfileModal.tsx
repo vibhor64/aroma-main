@@ -14,7 +14,7 @@ export type ModalScreenProps = {
 const ProfileModal = (props: ModalScreenProps) => {
     const swipe = useRef(new Animated.ValueXY()).current;
     const [users, setUsers] = useState(usersArray);
-    const { name='Jony', location="Denmark", distance=12, age=23, image=require("../../assets/images/user8.jpg") } = users[0]
+    const { name, location, distance, age, image } = users[0]
     const dragHandlers = {};
     const gender = 'Woman';
     const zodiac = 'Aries';
@@ -85,19 +85,47 @@ const ProfileModal = (props: ModalScreenProps) => {
             useNativeDriver={true}
         >
             {/* <View style={{ flex: 1, backgroundColor: '#DCADAD', justifyContent: 'center', alignItems: 'center',}}> */}
-            <Card
+
+            {/* <Card
                 key={name}
-                // name={name}
-                // location={location}
-                // distance={distance}
-                // age={age}
-                // image={image}
                 profileData={profileData}
                 isFirst={false}
                 swipe={swipe}
                 titlSign={''}
                 {...dragHandlers}
-            />
+            /> */}
+
+            {profileData && (
+                <Card
+                    key={name}
+                    profileData={profileData}
+                    isFirst={false}
+                    swipe={swipe}
+                    titlSign={''}
+                    {...dragHandlers}
+                />
+            )}
+
+            {/* {(
+                users.map(({ name, image, location, distance, age }, index) => {
+                    const isFirst = index == 0;
+                    // const dragHandlers = isFirst ? panResponder.panHandlers : { };
+                    const profileData = { name, location, distance, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6 }
+
+                    return (
+                        <Card
+                            key={name}
+                            profileData={profileData}
+                            isFirst={false}
+                            swipe={swipe}
+                            titlSign={''}
+                            {...dragHandlers}
+                        />
+                    )
+                }).reverse()
+            )} */}
+
+
             {/* </View> */}
             <TouchableOpacity style={{ width: '50%', alignSelf: 'center', position: 'absolute', bottom: 10 }} onPress={props.closeModal}>
                 <Text style={{ paddingHorizontal: 20, paddingVertical: 10, backgroundColor: '#0089BA', borderRadius: Platform.OS === 'ios' ? 15 : 30, textAlign: 'center', fontFamily: 'Poppins_700Bold', fontSize: 16, color: '#fff' }}>Close</Text>

@@ -83,11 +83,12 @@ export default function HomeScreen() {
     // PanResponder configuration
     const panResponder = PanResponder.create({
         // Allow pan responder to activate
+
+        
         onMoveShouldSetPanResponder: (event, gestureState) => {
             const dx = gestureState.dx;
-
             // Only allow the pan responder to activate if the user swipes in the x-direction with a force greater than 10 pixels
-            if (Math.abs(dx) > (Platform.OS === 'android'? 0 : 10)) {
+            if (Math.abs(dx) > (Platform.OS === 'android'? 10 : 10)) {
                 return true;
             }
             else if (!users.length) {
@@ -101,7 +102,7 @@ export default function HomeScreen() {
         // Handle card movement while dragging
         onPanResponderMove: (_, { dx, dy, y0 }) => {
             swipe.setValue({ x: dx, y: 0 });
-            // tit lSign.setValue(y0 > (height * 0.9) / 2 ? 1 : -1)
+            titlSign.setValue(y0 > (height * 0.9) / 2 ? 1 : -1)
         },
 
         // onPanResponderMove: (_, { dx, dy }) => {

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Platform } from 'react-native'
 import React from 'react'
 
 type CardProps = {
@@ -15,7 +15,7 @@ const PurchaseCards: React.FC<CardProps> = ({ prevCost, cost, duration, save }) 
       <View style={{flexDirection: 'row'}}>
         <Text style={{fontFamily: 'Poppins_700Bold', fontSize: 16, color: 'black', textDecorationLine: 'line-through',}}>{prevCost}</Text>   
         <Text style={{fontFamily: 'Poppins_700Bold', fontSize: 16, color: 'black',}}> {cost} INR /wk</Text>   
-        <Text style={{fontFamily: 'Poppins_400Regular', fontSize: 10, color: '#E42882', marginLeft: 20, borderWidth: 2, borderRadius: 20, borderColor: '#E42882', paddingHorizontal: 5, marginBottom: 13, paddingTop: 3, paddingLeft: 7}}>Popular</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular', fontSize: 10, color: '#E42882', marginLeft: 20, borderWidth: 2, borderRadius: Platform.OS === 'ios' ? 12 : 20, borderColor: '#E42882', paddingHorizontal: 5, marginBottom: 13, paddingTop: 3, paddingLeft: 7, paddingBottom: Platform.OS === 'ios' ? 3 : 0}}>Popular</Text>
       </View>
       <View style={{flexDirection: 'row', marginTop: 20}}>
         <Text style={{fontFamily: 'Poppins_700Bold', fontSize: 16, color: '#999999'}}>{duration}</Text>
