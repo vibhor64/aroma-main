@@ -18,6 +18,7 @@ const ProfileModal = (props: ModalScreenProps) => {
 
     const gender = 'Woman';
     const zodiac = 'Aries';
+    const bio = 'All shall ought to bow before me. I announce thee my will.';
     const img2 = require("../../assets/images/user8.jpg");
     const img3 = require("../../assets/images/user2.jpg");
     const img4 = require("../../assets/images/user3.jpg");
@@ -62,7 +63,7 @@ const ProfileModal = (props: ModalScreenProps) => {
         'Reading 📖',
         'Traveling ✈️',
     ];
-    const profileData = {name, location, distance, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
+    const profileData = {name, location, bio, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
     const dragHandlers = {};
 
     return (

@@ -44,7 +44,7 @@ export const newData = [
         "img4": "",
         "img5": require("../assets/images/user4.jpg"),
         "img6": "",
-        "traits": {
+        "traits": [{
         "branch": "",
         "hometown": "Seattle, Washington",
         "religion": "",
@@ -57,7 +57,7 @@ export const newData = [
         "zodiac": "Pisces",
         "relationshipType": "Seeking a serious relationship",
         "languages": "English, Spanish (basic)"
-        },
+        }],
         "bio": "I'm a passionate musician and love spending time outdoors. I'm looking for someone who is kind, adventurous, and has a good sense of humor.",
         "interests": ["Hiking", "Music", "Traveling"],
         "prompt1": {
@@ -86,7 +86,7 @@ export const newData = [
         "img4": "",
         "img5": "",
         "img6": "",
-        "traits": {
+        "traits": [{
         "branch": "",
         "hometown": "Chicago, Illinois",
         "religion": "",
@@ -99,7 +99,7 @@ export const newData = [
         "zodiac": "Cancer",
         "relationshipType": "Open to options",
         "languages": "English, Korean (fluent)"
-        },
+        }],
         "bio": "I'm a tech professional with a love for cooking and trying new restaurants. I'm looking for someone who is intelligent, independent, and has a zest for life.",
         "interests": ["Cooking", "Traveling", "Tech"],
         "prompt1": {

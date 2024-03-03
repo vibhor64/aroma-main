@@ -1,49 +1,47 @@
 import { PanResponder, View, Animated, Dimensions, StatusBar, Text, TouchableOpacity, ScrollView, Image, FlatList, Platform } from 'react-native';
-import React, { useCallback, useEffect, useRef, useState } from "react";
-// import { users as usersArray } from "../utils/data";
-import { newData } from '../utils/newData';
-import Card from '../components/home/Card';
+import React, { useState } from "react";
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import { useFonts } from 'expo-font';
 import { AdjustmentsHorizontalIcon as Filter } from "react-native-heroicons/outline";
-// import { Fonts } from '../fonts';
-
+import ProfileModal from '../components/Like/ProfileModal';
+import { newData } from '../utils/newData';
+import { newLikeData } from '../utils/NewLikeData';
 
 const { width, height } = Dimensions.get("screen");
 
 export default function HomeScreen() {
-  // Load fonts
-  // let [fontsLoaded] = useFonts({
-  //   'Italiana': require('../assets/fonts/Italiana.ttf'),
-  // });
-
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-  // const {name} = newData;
-  const numberOfProposals = 4;
-  const numberOfLikes = 3;
+  // const numberOfProposals = 4;
+  // const numberOfLikes = 3;
+  // Proposal data is directly dumped by newData
+  // Like data is directly dumped by newLikeData
 
   // Proposals
-  // On press, push the user's id at the top of discovery stack and navigate to home
-  const renderImage = (index) => (
+  const renderImage = (item: any) => (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 14 }}>
-      <TouchableOpacity activeOpacity={0.4}>
+      <TouchableOpacity activeOpacity={0.4} onPress={() => toggleModal(item)}>
         <Image source={require('../assets/images/proposal.png')} style={{ width: 150, height: 216, marginTop: 15, borderRadius: 10 }} />
       </TouchableOpacity>
     </View>
   );
+
   // Likes
-  const renderLikeImage = (index) => (
+  const renderLikeImage = (item: any) => (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 14 }}>
-      <TouchableOpacity activeOpacity={0.4}>
+      <TouchableOpacity activeOpacity={0.4} onPress={() => toggleModal(item)}>
         <Image source={require('../assets/images/likeScreen.png')} style={{ width: 150, height: 216, marginTop: 15, borderRadius: 10 }} />
       </TouchableOpacity>
     </View>
   );
 
-  const data = Array.from({ length: numberOfProposals }, (_, index) => ({ key: index.toString() }));
-  const Ldata = Array.from({ length: numberOfLikes }, (_, index) => ({ key: index.toString() }));
+  // const data = Array.from({ length: numberOfProposals }, (_, index) => ({ key: index.toString() }));
+  // const Ldata = Array.from({ length: numberOfLikes }, (_, index) => ({ key: index.toString() }));
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const toggleModal = (item: any) => {
+    setSelectedItem(item);
+    setModalVisible(!isModalVisible);
+  };
 
   // Load fonts
   // const [fontLoaded] = Fonts();
@@ -87,24 +85,22 @@ export default function HomeScreen() {
               keyExtractor={(item, index) => index.toString()} // Use index as the key, as items don't have a 'key' property
               horizontal
               showsHorizontalScrollIndicator={false}
-              renderItem={({ item }) =>  renderImage(Array.from({ length: newData.length }, (_, index) => index))}
+              renderItem={({ item }) => renderImage(item)}
             />
           </>
           )}
 
 
 
-
-
-
           {/* Like Cards */}
-          {numberOfLikes > 0 && (
+          {newLikeData.length > 0 && (
             <>
-              <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#C08484', fontSize: 12, marginHorizontal: 20, marginTop: numberOfProposals > 0 ? -10 : 20 }}>{numberOfLikes} · Likes</Text>
+              <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#C08484', fontSize: 12, marginHorizontal: 20, marginTop: newLikeData.length > 0 ? -10 : 20 }}>{newLikeData.length} · Likes</Text>
               <FlatList
-                data={Ldata}
-                renderItem={({ item }) => renderLikeImage(Array.from({ length: numberOfLikes }, (_, index) => index))}
-                keyExtractor={(item) => item.key}
+                data={newLikeData}
+                // renderItem={({ item }) => renderLikeImage(Array.from({ length: newData.length }, (_, index) => index))}
+                renderItem={({ item }) => renderLikeImage(item)}
+                keyExtractor={(item, index) => index.toString()}
                 horizontal
                 showsHorizontalScrollIndicator={false}
 
@@ -114,7 +110,7 @@ export default function HomeScreen() {
 
 
           {/* No Likes Prompt */}
-          {numberOfLikes < 1 && numberOfProposals < 1 && (
+          {newLikeData.length < 1 && newData.length < 1 && (
             <View>
               <Text style={{color: '#000', fontFamily: 'Poppins_700Bold', fontSize: 18, textAlign: 'center', marginTop: 200}}>No Proposals or Likes... yet!</Text>
             </View>
@@ -122,7 +118,7 @@ export default function HomeScreen() {
 
 
             {/* Get More Swipes Button */}
-            {(numberOfLikes < 1 || numberOfProposals < 1) && (
+            {(newLikeData.length < 1 || newData.length < 1) && (
           <View style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity activeOpacity={0.4}>
               <Text style={{ backgroundColor: '#8FCDBB', padding: 20, paddingVertical: 10, color: '#fff', fontFamily: 'Poppins_700Bold', fontSize: 18, marginTop: -26,  borderRadius: Platform.OS === 'ios' ? 20 : 30, overflow: 'hidden' }}>Get More Swipes</Text>
@@ -134,7 +130,7 @@ export default function HomeScreen() {
 
         {/* </ScrollView> */}
 
-
+        <ProfileModal isVisible={isModalVisible} closeModal={() => toggleModal(null)} selectedItem={selectedItem}/>
       </View>
     </SafeAreaView>
   );

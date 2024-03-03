@@ -270,9 +270,9 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
 
     return (
         <>
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#e9effd' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#DCADAD' }}>
             {/* Header */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', shadowColor: "#000000", shadowOffset: { width: 0, height: 1, }, shadowOpacity: 0.17, shadowRadius: 1.51, elevation: 4, backgroundColor: '#a9b6d9', borderRadius: 20, paddingVertical: 15, borderTopRightRadius: 0, borderTopLeftRadius: 0, overflow: 'hidden'}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', shadowColor: "#000000", shadowOffset: { width: 0, height: 1, }, shadowOpacity: 0.17, shadowRadius: 1.51, elevation: 4, backgroundColor: '#A47879', borderRadius: 20, paddingVertical: 15, borderTopRightRadius: 0, borderTopLeftRadius: 0, overflow: 'hidden'}}>
 
                 {/* <ArrowLeftIcon size={25} onPress={() => navigation.goBack()} style={{ marginLeft: 15, marginTop: 8 }} color={"white"} /> */}
                 <TouchableOpacity onPress={() => navigation.goBack()} >
@@ -314,7 +314,7 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                 <View style={{ height: 50, borderColor: 'gray', borderWidth: 0, borderRadius: 20, margin: 10, backgroundColor: '#f7f8fd', padding: 10, flex: 1,  flexDirection: 'row', width: '90%',alignItems: 'center', marginHorizontal: 20, justifyContent: 'space-around', marginTop: 0}}>
 
                 {/* <CameraIcon size={30} color={"#000"} style={{ marginLeft: 10 }} /> */}
-                <PlusCircleIcon size={35} color={"#527bf1"} style={{ marginLeft: 6 }} />
+                <PlusCircleIcon size={35} color={"#A47879"} style={{ marginLeft: 6 }} />
                 <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 0, borderRadius: 7, margin: 10, padding: 1, fontFamily: 'Poppins_400Regular', fontSize: 14, color: 'black', flex: 1 }}
                     placeholder='Message...'
@@ -324,7 +324,7 @@ const Chatting: React.FC<ChattingProps> = ({ route }) => {
                     value={text}
                     
                     />
-                <PaperAirplaneIcon size={27} color={"#9ca2ae"} style={{ marginRight: 10, padding: 5 }} onPress={() => sendMessage()} />
+                <PaperAirplaneIcon size={27} color={"#DCADAD"} style={{ marginRight: 10, padding: 5 }} onPress={() => sendMessage()} />
                     </View>
             </View>
             {/* </KeyboardAvoidingView> */}

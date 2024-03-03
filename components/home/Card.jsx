@@ -8,7 +8,7 @@ import { Fonts } from '../../fonts';
 const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
     // console.log(profileData);
 
-    const { name, age, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6 } = profileData
+    const { name, age, bio, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6 } = profileData
 
     // const zodiacSign = {
     //     "Aries": "♈",
@@ -140,7 +140,7 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
                     <View style={{ margin: 20 }}>
                         <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold" }}>About</Text>
                         <Text style={{ fontSize: 11, color: "#A0A0A0", fontFamily: "Poppins_600SemiBold" }}>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a moss.</Text>
+                            {bio}</Text>
                         <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginTop: 10 }}>Preferences</Text>
                         <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: -10 }}>
                             {personalityTraits.map((item, index) => (
@@ -193,8 +193,8 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
                 )}
 
                 {/* Prompt 1 */}
-                <View style={styles.promptFrame}>
-                    <View style={{ margin: 20, }}>
+                <View style={[styles.promptFrame, { marginTop: img2 ? 0 : 20 }]}>
+                    <View style={{ margin: 20,}}>
                         <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
                         <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
                     </View>

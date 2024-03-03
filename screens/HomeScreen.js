@@ -15,6 +15,7 @@ export default function HomeScreen() {
 
     const gender = 'Woman';
     const zodiac = 'Aries';
+    const bio = 'I am rich, I am famous, but I am bitchless.';
     const img2 = require("../assets/images/user8.jpg");
     const img3 = require("../assets/images/user2.jpg");
     const img4 = require("../assets/images/user3.jpg");
@@ -46,8 +47,8 @@ export default function HomeScreen() {
         '🚬 No',
         '🍾 Yes',
         '💊 No',
-        `${zodiacSign[zodiac]} ${zodiac}`,
         '🗣️ Hindi, English, Japanese',
+        `${zodiacSign[zodiac]} ${zodiac}`,
     ];
 
     const Interests = [
@@ -73,12 +74,12 @@ export default function HomeScreen() {
     const swipe = useRef(new Animated.ValueXY()).current;
     const titlSign = useRef(new Animated.Value(1)).current;
 
-    useEffect(() => {
-        // Reset users data if the array is empty
-        if (!users.length) {
-            setUsers(usersArray);
-        }
-    }, [users.length])
+    // useEffect(() => {
+    //     // Reset users data if the array is empty
+    //     if (!users.length) {
+    //         setUsers(usersArray);
+    //     }
+    // }, [users.length])
 
     // PanResponder configuration
     const panResponder = PanResponder.create({
@@ -217,7 +218,7 @@ export default function HomeScreen() {
                     users.map(({ name, image, location, distance, age }, index) => {
                         const isFirst = index == 0;
                         const dragHandlers = isFirst ? panResponder.panHandlers : {};
-                        const profileData = {name, location, distance, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
+                        const profileData = {name,bio, location,age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
 
                         return (
                             <Card
