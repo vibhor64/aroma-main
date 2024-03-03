@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, Image, TouchableOpacity, Platform } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView, Image, TouchableOpacity, Platform, Animated } from 'react-native'
+import React, { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil';
 import { userState } from '../../utils/Store';
 import { useNavigation } from '@react-navigation/native';
@@ -26,6 +26,22 @@ const InterestsScreen = () => {
       alert('You can select upto 20 interests');
     }
   };
+
+  const animationValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    // Animate the button based on interests.length
+    Animated.timing(animationValue, {
+      toValue: interests.length > 0 ? 1 : 0,
+      duration: 200, // Adjust the duration as needed
+      useNativeDriver: false, // Set to true if possible, depends on your specific styles
+    }).start();
+  }, [interests]);
+
+  const interpolatedBottom = animationValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-55, 20], // Adjust the starting and ending position as needed
+  });
 
   const Hobbies = [
     '📸 Photography',
@@ -215,11 +231,24 @@ const InterestsScreen = () => {
 
         </View>
       </ScrollView>
-          {interests.length > 0 && (
-            <TouchableOpacity activeOpacity={0.4} style={{position: 'absolute', bottom: 20, marginTop: 10, alignSelf: 'center', width: '90%', }} onPress={() => { navigation.navigate('Prompts') }}>
-              <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#DCADAD', borderRadius: Platform.OS == 'android' ? 30 : 20, textAlign: 'center', overflow: 'hidden', }}>Next</Text>
-            </TouchableOpacity>
-          )}
+
+      <Animated.View
+        style={{
+          position: 'absolute',
+          bottom: interpolatedBottom,
+          marginTop: 10,
+          alignSelf: 'center',
+          width: '90%',
+        }}
+      >
+        <TouchableOpacity
+          activeOpacity={0.4}
+          onPress={() => { navigation.navigate('Prompts') }}
+          style={{}}
+        >
+          <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#DCADAD', borderRadius: Platform.OS == 'android' ? 30 : 20, textAlign: 'center', overflow: 'hidden', }}>Next</Text>
+        </TouchableOpacity>
+      </Animated.View>
     </>
 
   )

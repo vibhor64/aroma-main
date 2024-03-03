@@ -11,6 +11,7 @@ const { width, height } = Dimensions.get("screen");
 export default function HomeScreen() {
   // const numberOfProposals = 4;
   // const numberOfLikes = 3;
+  
   // Proposal data is directly dumped by newData
   // Like data is directly dumped by newLikeData
 

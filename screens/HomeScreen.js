@@ -1,6 +1,6 @@
 import { PanResponder, View, Animated, Dimensions, StatusBar, Text, TouchableOpacity, Platform } from 'react-native';
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { users as usersArray } from "../utils/data";
+// import { users as usersArray } from "../utils/data";
 import Card from '../components/home/Card';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
@@ -8,19 +8,11 @@ import { AdjustmentsHorizontalIcon as Filter } from "react-native-heroicons/outl
 import LastCard from '../components/home/LastCard';
 import Loader from '../Loader';
 import Matched from '../components/home/Matched';
+import { HomeData } from '../utils/HomeData';
 
 const { width, height } = Dimensions.get("screen");
 
 export default function HomeScreen() {
-
-    const gender = 'Woman';
-    const zodiac = 'Aries';
-    const bio = 'I am rich, I am famous, but I am bitchless.';
-    const img2 = require("../assets/images/user8.jpg");
-    const img3 = require("../assets/images/user2.jpg");
-    const img4 = require("../assets/images/user3.jpg");
-    const img5 = require("../assets/images/user5.jpg");
-    const img6 = require("../assets/images/user7.jpg");
 
     const zodiacSign = {
         "Aries": "♈",
@@ -35,61 +27,37 @@ export default function HomeScreen() {
         "Capricorn": "♑",
         "Aquarius": "♒",
         "Pisces": "♓"
-      }
-
-    const personalityTraits = [
-        gender,
-        '🌏 Punjabi',
-        '💪 Yes',
-        '👫 Long-term (Open to short-term)',
-        '☁️ Straight',
-        '🛐 Hindu',
-        '🚬 No',
-        '🍾 Yes',
-        '💊 No',
-        '🗣️ Hindi, English, Japanese',
-        `${zodiacSign[zodiac]} ${zodiac}`,
-    ];
-
-    const Interests = [
-        'Cooking 🍳',
-        'Bathing 🚿',
-        'Chatting 🗣️',
-        'Winning 🥇',
-        'Dancing 💃',
-        'Reading 📖',
-        'Traveling ✈️',
-    ];
+    }
 
     const [isModalVisible, setModalVisible] = useState(false);
 
     const toggleModal = () => {
-      setModalVisible(!isModalVisible);
+        setModalVisible(!isModalVisible);
     };
 
     // State to hold the users data
-    const [users, setUsers] = useState(usersArray);
+    const [users, setUsers] = useState(HomeData);
 
     // Animated values for swipe and tilt
     const swipe = useRef(new Animated.ValueXY()).current;
     const titlSign = useRef(new Animated.Value(1)).current;
 
-    // useEffect(() => {
-    //     // Reset users data if the array is empty
-    //     if (!users.length) {
-    //         setUsers(usersArray);
-    //     }
-    // }, [users.length])
+    useEffect(() => {
+        // Reset users data if the array is empty
+        if (!users.length) {
+            setUsers(HomeData);
+        }
+    }, [users.length])
 
     // PanResponder configuration
     const panResponder = PanResponder.create({
         // Allow pan responder to activate
 
-        
+
         onMoveShouldSetPanResponder: (event, gestureState) => {
             const dx = gestureState.dx;
             // Only allow the pan responder to activate if the user swipes in the x-direction with a force greater than 10 pixels
-            if (Math.abs(dx) > (Platform.OS === 'android'? 10 : 10)) {
+            if (Math.abs(dx) > (Platform.OS === 'android' ? 10 : 10)) {
                 return true;
             }
             else if (!users.length) {
@@ -109,7 +77,7 @@ export default function HomeScreen() {
         // onPanResponderMove: (_, { dx, dy }) => {
         //     // Allow movement only if the horizontal movement is greater than the vertical movement
         //     const isHorizontalSwipe = Math.abs(dx) > Math.abs(dy);
-          
+
         //     if (isHorizontalSwipe) {
         //       // Horizontal swipe
         //       swipe.setValue({ x: dx, y: 0 });
@@ -118,7 +86,7 @@ export default function HomeScreen() {
         //       swipe.setValue({ x: 0, y: 0 });
         //     }
         //   },
-          
+
 
         onPanResponderStart: (event, gestureState) => {
             // Check the value of the `dx` property
@@ -181,7 +149,7 @@ export default function HomeScreen() {
 
     }, [removeTopCard, swipe.x]);
 
-    
+
 
     // Load fonts
     let [fontsLoaded] = useFonts({
@@ -205,7 +173,7 @@ export default function HomeScreen() {
                         Aroma
                     </Text>
                     <TouchableOpacity style={{ position: 'absolute', right: 20, alignItems: 'center', justifyContent: 'center' }}
-                    onPress={toggleModal}>
+                        onPress={toggleModal}>
                         <View style={{ width: 40, height: 40, borderRadius: 50, backgroundColor: '#A47879', position: 'absolute', right: -5 }}></View>
                         <Filter size={30} color="#ECECEC" />
                     </TouchableOpacity>
@@ -215,19 +183,64 @@ export default function HomeScreen() {
                     <LastCard />
                 ) : (
                     // Map users array to render cards
-                    users.map(({ name, image, location, distance, age }, index) => {
+                    users.map(({ sno, name, showNameOnProfile, bio, age, image, gender, img2, img3, img4, img5, img6, traits, interests, prompt1, prompt2, prompt3 }, index) => {
                         const isFirst = index == 0;
                         const dragHandlers = isFirst ? panResponder.panHandlers : {};
-                        const profileData = {name,bio, location,age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
+                        if (!showNameOnProfile){
+                            name = name[0];
+                        }
+                        // const profileData = {name,bio, location,age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
+
+                        const formattedArray = [];
+
+                        traits.forEach(data => {
+
+                            formattedArray.push(gender);
+
+                            if (data.ethnicity) {
+                                formattedArray.push(`🌏 ${data.ethnicity}`);
+                            }
+
+                            if (data.exercise) {
+                                formattedArray.push(`💪 ${data.exercise}`);
+                            }
+
+                            if (data.relationshipType) {
+                                formattedArray.push(`👫 ${data.relationshipType}`);
+                            }
+                            if (data.sorientation) {
+                                formattedArray.push(`☁️ ${data.sorientation}`);
+                            }
+
+                            if (data.religion) {
+                                formattedArray.push(`🛐 ${data.religion}`);
+                            }
+
+                            if (data.smoke) {
+                                formattedArray.push(`🚬 ${data.smoke}`);
+                            }
+
+                            if (data.drink) {
+                                formattedArray.push(`🍾 ${data.drink}`);
+                            }
+
+                            if (data.languages) {
+                                formattedArray.push(`🗣️ ${data.languages}`);
+                            }
+
+                            if (data.zodiac) {
+                                formattedArray.push(`${zodiacSign[data.zodiac]} ${data.zodiac}`);
+                            }
+                        });
+                        
+                        const personalityTraits = formattedArray
+                        const Interests = interests
+                        const location = traits[0]?.hometown
+                        const profileData = { name, bio, location, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6, prompt1, prompt2, prompt3}
 
                         return (
                             <Card
-                                key={name}
-                                // name={name}
-                                // location={location}
-                                // distance={distance}
-                                // age={age}
-                                // image={image}
+                                key={sno}
                                 profileData={profileData}
                                 isFirst={isFirst}
                                 swipe={swipe}

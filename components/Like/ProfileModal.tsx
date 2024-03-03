@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 // import { userState } from '../../utils/Store';
 import Card from '../home/Card';
 import { CheckBadgeIcon } from 'react-native-heroicons/solid';
+import Matched from '../home/Matched';
 // import { users as usersArray } from "../../utils/data";
 
 export type ModalScreenProps = {
@@ -23,8 +24,11 @@ const ProfileModal = (props: ModalScreenProps) => {
   const selectedItem = props.selectedItem;
   // console.log(selectedItem)
   // console.log(selectedItem.traits)
-  const { name, location, bio, age, image, gender, img2, img3, img4, img5, img6, traits, interests } = selectedItem
-
+  let { name, showNameOnProfile,bio, age, image, gender, img2, img3, img4, img5, img6, traits, interests, prompt1, prompt2, prompt3 } = selectedItem
+  if (!showNameOnProfile){
+    name = name[0];
+}
+const location = traits[0]?.hometown
   // const img2 = require("../../assets/images/user8.jpg");
   // const img3 = require("../../assets/images/user2.jpg");
   // const img4 = require("../../assets/images/user3.jpg");
@@ -90,8 +94,14 @@ const ProfileModal = (props: ModalScreenProps) => {
 
   const personalityTraits = formattedArray
   const Interests = interests
-  const profileData = { name, bio, location, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6 }
+  const profileData = { name, bio, location, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6, prompt1, prompt2, prompt3 }
   const dragHandlers = {};
+
+  const [isModVisible, setModVisible] = useState(false);
+
+    const toggleMod = () => {
+      setModVisible(!isModVisible);
+    };
 
   return (
     <Modal
@@ -128,11 +138,13 @@ const ProfileModal = (props: ModalScreenProps) => {
         <Image source={require('../../assets/icons/cross.png')} style={{ backgroundColor: '#E42828', overflow: 'hidden', borderRadius: 100, height: 70, width: 70,  }}/>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{ }} onPress={props.closeModal}>
+      <TouchableOpacity style={{ }} onPress={() => {props.closeModal; toggleMod();}} >
       {/* <Text style={{ backgroundColor: '#63B248', textAlign: 'center', fontSize: 16, color: '#fff', overflow: 'hidden', borderRadius: 100, height: 70, width: 70, textAlignVertical: 'center', }}>✔️</Text> */}
       <CheckBadgeIcon size={90} color={'#63B248'} />
       </TouchableOpacity>
       </View>
+
+      <Matched isVisible={isModVisible} closeModal={toggleMod} />
     </Modal>
   )
 }

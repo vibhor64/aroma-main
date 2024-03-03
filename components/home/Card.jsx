@@ -8,47 +8,7 @@ import { Fonts } from '../../fonts';
 const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
     // console.log(profileData);
 
-    const { name, age, bio, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6 } = profileData
-
-    // const zodiacSign = {
-    //     "Aries": "♈",
-    //     "Taurus": "♉",
-    //     "Gemini": "♊",
-    //     "Cancer": "♋",
-    //     "Leo": "♌",
-    //     "Virgo": "♍",
-    //     "Libra": "♎",
-    //     "Scorpio": "♏",
-    //     "Sagittarius": "♐",
-    //     "Capricorn": "♑",
-    //     "Aquarius": "♒",
-    //     "Pisces": "♓"
-    //   }
-
-    // const personalityTraits = [
-    //     gender,
-    //     '🌏 Punjabi',
-    //     '💪 Yes',
-    //     '👫 Long-term (Open to short-term)',
-    //     '☁️ Straight',
-    //     '🛐 Hindu',
-    //     '🚬 No',
-    //     '🍾 Yes',
-    //     '💊 No',
-    //     `${zodiacSign[zodiac]} ${zodiac}`,
-    //     '🗣️ Hindi, English, Japanese',
-    // ];
-
-    // const Interests = [
-    //     'Cooking 🍳',
-    //     'Bathing 🚿',
-    //     'Chatting 🗣️',
-    //     'Winning 🥇',
-    //     'Dancing 💃',
-    //     'Reading 📖',
-    //     'Traveling ✈️',
-    // ];
-
+    const { name, age, bio, location, image, personalityTraits, Interests, img2, img3, img4, img5, img6, prompt1, prompt2, prompt3 } = profileData
 
 
     // Calculate the rotation of the card based on swipe gesture
@@ -113,47 +73,47 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
         <Animated.View
             style={[styles.container, isFirst && animatedCardStyle]} {...rest}>
 
-                <View style={{zIndex: -1, position: 'absolute', width: width * 0.9, height: height * 0.6, borderRadius: 0,}}>
+            <View style={{ zIndex: -1, position: 'absolute', width: width * 0.9, height: height * 0.6, borderRadius: 0, }}>
 
                 <View style={{ width: width * 0.9, height: height * 0.6, borderRadius: 0, }}>
                     <Image source={image} style={styles.image} resizeMode="cover" />
                 </View>
 
-                </View>
-                {/* Profile Main Details */}
+            </View>
+            {/* Profile Main Details */}
 
 
             <ScrollView style={{ width: width * 0.9, height: height * 0.78, borderRadius: 0, }} showsVerticalScrollIndicator={false}
                 alwaysBounceVertical={false}>
-                
-                <View style={{ height: 500}}></View>
+
+                <View style={{ height: 500 }}></View>
                 <View style={styles.userContainer}>
                     <Text style={{ fontSize: 26, color: "#FFFFFF", fontFamily: "Poppins_800ExtraBold" }}>{name}, {age} </Text>
                     <Text style={{ fontSize: 13, color: "#BCBCBC", fontFamily: "Poppins_600SemiBold", maxWidth: '95%' }} numberOfLines={1} >
-                        IT, {location}, 168 cm, Delhi
+                        IT, {location}, 168 cm
                     </Text>
                 </View>
 
-                <View style={{backgroundColor: '#dadada'}}>
-                {/* Main Frame */}
-                <View style={styles.mainFrame}>
-                    <View style={{ margin: 20 }}>
-                        <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold" }}>About</Text>
-                        <Text style={{ fontSize: 11, color: "#A0A0A0", fontFamily: "Poppins_600SemiBold" }}>
-                            {bio}</Text>
-                        <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginTop: 10 }}>Preferences</Text>
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: -10 }}>
-                            {personalityTraits.map((item, index) => (
-                                <View key={index} style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                    <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>{item}</Text>
-                                </View>
-                            ))}
+                <View style={{ backgroundColor: '#dadada' }}>
+                    {/* Main Frame */}
+                    <View style={styles.mainFrame}>
+                        <View style={{ margin: 20 }}>
+                            <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold" }}>About</Text>
+                            <Text style={{ fontSize: 11, color: "#A0A0A0", fontFamily: "Poppins_600SemiBold" }}>
+                                {bio}</Text>
+                            <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginTop: 10 }}>Preferences</Text>
+                            <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: -10 }}>
+                                {personalityTraits.map((item, index) => (
+                                    <View key={index} style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
+                                        <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}>{item}</Text>
+                                    </View>
+                                ))}
+                            </View>
                         </View>
                     </View>
-                </View>
 
-                {/* Horizontal Scrollview Details */}
-                {/* {Platform.OS === 'android' && (
+                    {/* Horizontal Scrollview Details */}
+                    {/* {Platform.OS === 'android' && (
 
 
                     <View style={styles.quickInfo}>
@@ -173,80 +133,87 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
                     </View >
                 )} */}
 
-                {/* {Platform.OS === 'ios' && ( */}
-                <>
-                    <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginHorizontal: 20 }}>Interests</Text>
-                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10, marginBottom: 20 }}>
-                        {Interests.map((item, index) => (
-                            <View key={index} style={{ backgroundColor: '#fff', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
-                                <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}> {item}</Text>
+                    {/* {Platform.OS === 'ios' && ( */}
+                    <>
+                        <Text style={{ fontSize: 12, color: "#E23DA0", fontFamily: "Poppins_700Bold", marginHorizontal: 20 }}>Interests</Text>
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10, marginBottom: 20 }}>
+                            {Interests.map((item, index) => (
+                                <View key={index} style={{ backgroundColor: '#fff', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
+                                    <Text style={{ fontSize: 10, color: "#000", fontFamily: "Poppins_600SemiBold" }}> {item}</Text>
+                                </View>
+                            ))}
+                        </View>
+                    </>
+
+                    {/* Image 2 */}
+                    {img2 && (
+                        <Image source={img2}
+                            style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                        />
+                    )}
+
+                    {/* Prompt 1 */}
+                    {prompt1.question && (
+                        <View style={[styles.promptFrame, { marginTop: img2 ? 0 : 20 }]}>
+                            <View style={{ margin: 20, }}>
+                                <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>{prompt1.question}</Text>
+                                <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>{prompt1.answer}</Text>
                             </View>
-                        ))}
-                    </View>
-                </>
+                        </View>
+                    )}
 
-                {/* Image 2 */}
-                {img2 && (
-                    <Image source={img2}
-                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
-                    />
-                )}
+                    {/* Image 3 */}
+                    {img3 && (
+                        <Image source={img3}
+                            style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                        />
+                    )}
 
-                {/* Prompt 1 */}
-                <View style={[styles.promptFrame, { marginTop: img2 ? 0 : 20 }]}>
-                    <View style={{ margin: 20,}}>
-                        <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
-                        <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
-                    </View>
-                </View>
+                    {/* Image 4 */}
+                    {img4 && (
+                        <Image source={img4}
+                            style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                        />
+                    )}
 
-                {/* Image 3 */}
-                {img3 && (
-                    <Image source={img3}
-                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
-                    />
-                )}
+                    {/* Prompt 2 */}
+                    {prompt2.question && (
 
-                {/* Image 4 */}
-                {img4 && (
-                    <Image source={img4}
-                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
-                    />
-                )}
+                        <View style={styles.promptFrame}>
+                            <View style={{ margin: 20 }}>
+                                <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>{prompt2.question}</Text>
+                                <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>{prompt2.answer}</Text>
+                            </View>
+                        </View>
+                    )}
 
-                {/* Prompt 2 */}
-                <View style={styles.promptFrame}>
-                    <View style={{ margin: 20 }}>
-                        <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
-                        <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
-                    </View>
-                </View>
+                    {/* Image 5 */}
+                    {img5 && (
+                        <Image source={img5}
+                            style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
+                        />
+                    )}
 
-                {/* Image 5 */}
-                {img5 && (
-                    <Image source={img5}
-                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 20 }}
-                    />
-                )}
+                    {/* Prompt 3 */}
+                    {prompt3.question && (
+                        <View style={styles.promptFrame}>
+                            <View style={{ margin: 20 }}>
+                                <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>{prompt3.question}</Text>
+                                <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>{prompt3.answer}</Text>
+                            </View>
+                        </View>
+                    )}
 
-                {/* Prompt 3 */}
-                <View style={styles.promptFrame}>
-                    <View style={{ margin: 20 }}>
-                        <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16 }}>After work you can find me at</Text>
-                        <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#A0A0A0' }}>Insert controversial opinion that no one actually even cares  about</Text>
-                    </View>
-                </View>
+                    {/* Image 6 */}
 
-                {/* Image 6 */}
+                    {img6 && (
+                        <Image source={img6}
+                            style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom: 0 }}
+                        />
+                    )}
 
-                {img6 && (
-                    <Image source={img6}
-                        style={{ height: 400, width: width * 0.9, borderRadius: 20, marginBottom:0 }}
-                    />
-                )}
-
-                {/* Favourite Artists */}
-                {/* <View>
+                    {/* Favourite Artists */}
+                    {/* <View>
                     <Text style={{ fontFamily: 'Poppins_700Bold', fontSize: 16, marginHorizontal: 20, color: '#E23DA0', marginTop: 20 }}>Favourite Artists</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10 }}>
                         <View style={{ backgroundColor: '#D9D9D9', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 20, margin: 5 }}>
@@ -272,11 +239,11 @@ const Card = ({ profileData, isFirst, swipe, titlSign, ...rest }) => {
                     </View>
                 </View> */}
 
-                {/* Dummy view for additional bottom space */}
-                {/* <View style={{ height: 10, width: width * 0.9, }}></View> */}
+                    {/* Dummy view for additional bottom space */}
+                    {/* <View style={{ height: 10, width: width * 0.9, }}></View> */}
 
 
-                {isFirst && renderChoice()}
+                    {isFirst && renderChoice()}
                 </View>
             </ScrollView>
 
@@ -289,7 +256,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 70,
         borderRadius: 20,
-        overflow: 'hidden',        
+        overflow: 'hidden',
         backgroundColor: '#ECECEC',
         // padding: 4
     },

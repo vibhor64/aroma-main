@@ -25,6 +25,10 @@ const ProfileModal = (props: ModalScreenProps) => {
     const img5 = require("../../assets/images/user5.jpg");
     const img6 = require("../../assets/images/user7.jpg");
 
+    const prompt1 = {"question": "What's your favorite travel destination?", "answer": "I love visiting tropical islands."}
+    const prompt2 = {"question": "What are your hobbies?", "answer": "I enjoy playing the guitar and painting."}
+    const prompt3 ={"question": "Describe your ideal weekend.", "answer": "Spending time outdoors and trying new restaurants."}
+
     const zodiacSign = {
         "Aries": "♈",
         "Taurus": "♉",
@@ -63,7 +67,7 @@ const ProfileModal = (props: ModalScreenProps) => {
         'Reading 📖',
         'Traveling ✈️',
     ];
-    const profileData = {name, location, bio, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6}
+    const profileData = {name, location, bio, age, image, personalityTraits, Interests, img2, img3, img4, img5, img6, prompt1, prompt2, prompt3}
     const dragHandlers = {};
 
     return (
