@@ -216,57 +216,67 @@ const Preferences = () => {
       <View style={{ padding: 20, paddingTop: 30, backgroundColor: '#fff', }}>
       <Image source={require('../../assets/icons/login page/s2.jpg')} style={{width: 35, height: 35,marginLeft: 4}} /> 
       <Image source={require('../../assets/icons/login page/h3.jpg')} style={{width: 45, height: 45,position: 'absolute', right: -5, top: 310}} /> 
-      <Image source={require('../../assets/icons/login page/s3.jpg')} style={{width: 25, height: 25,position: 'absolute', left: 4, bottom: Platform.OS == 'android' ? 300 : 450}} /> 
+      <Image source={require('../../assets/icons/login page/s3.jpg')} style={{width: 25, height: 25,position: 'absolute', left: 4, bottom: Platform.OS == 'android' ? 210 : 450}} /> 
       <Text style={{ fontSize: 32, fontFamily: 'Poppins_700Bold', color: '#E23DA0' }}>Edit Preferences</Text>
       <Text style={{ fontSize: 12, fontFamily: 'Poppins_600SemiBold', color: '#000' }}>This might help us find the right match for you!</Text>
 
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Branch</Text>
       <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000', }}
-        value={traits.branch}
-        onSubmitEditing={(event) => updateBranch(event.nativeEvent.text)}
-        onChangeText={(text) => updateBranch(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderLeftWidth: 1 }}
+          value={traits.branch}
+          onSubmitEditing={(event) => updateBranch(event.nativeEvent.text)}
+          onChangeText={(text) => updateBranch(text)}
+          placeholder="Branch"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Hometown</Text>
-      <TextInput
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Hometown</Text> */}
+        <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000', }}
-        value={traits.hometown}
-        onSubmitEditing={(event) => updateHometown(event.nativeEvent.text)}
-        onChangeText={(text) => updateHometown(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderRightWidth: 1 }}
+          value={traits.hometown}
+          onSubmitEditing={(event) => updateHometown(event.nativeEvent.text)}
+          onChangeText={(text) => updateHometown(text)}
+          placeholder="Hometown"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Religion</Text>
-      <TextInput
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000',}}
-        value={traits.religion}
-        onSubmitEditing={(event) => updateReligion(event.nativeEvent.text)}
-        onChangeText={(text) => updateReligion(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Religion</Text> */}
+        <TextInput
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderLeftWidth: 1 }}
+          value={traits.religion}
+          onSubmitEditing={(event) => updateReligion(event.nativeEvent.text)}
+          onChangeText={(text) => updateReligion(text)}
+          placeholder="Religion"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Ethnicity</Text>
-      <TextInput
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Ethnicity</Text> */}
+        <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000e', }}
-        value={traits.ethnicity}
-        onSubmitEditing={(event) => updateEthnicity(event.nativeEvent.text)}
-        onChangeText={(text) => updateEthnicity(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderTopWidth: 1, borderColor: '#E23DA0', borderRightWidth: 1 }}
+          value={traits.ethnicity}
+          onSubmitEditing={(event) => updateEthnicity(event.nativeEvent.text)}
+          onChangeText={(text) => updateEthnicity(text)}
+          placeholder="Ethnicity"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
+
+        <TextInput
+
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderLeftWidth: 1 }}
+          value={traits.languages}
+          onSubmitEditing={(event) => updateLanguages(event.nativeEvent.text)}
+          onChangeText={(text) => updateLanguages(text)}
+          placeholder="Languages"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
       <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Exercise</Text>
       <Picker
@@ -371,20 +381,8 @@ const Preferences = () => {
       </Picker>
 
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Languages</Text>
-      <TextInput
-
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000', overflow: 'hidden', textAlign: 'center', }}
-        value={traits.languages}
-        onSubmitEditing={(event) => updateLanguages(event.nativeEvent.text)}
-        onChangeText={(text) => updateLanguages(text)}
-        placeholder="Seperate with comma"
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
-
       <TouchableOpacity activeOpacity={0.4} style={{marginTop: 50, alignSelf: 'center', width: '90%' }} onPress={() => { navigation.goBack() }}>
-        <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#0089BA', borderRadius: Platform.OS == 'android'? 30:20, overflow: 'hidden', textAlign: 'center', }}>Back</Text>
+        <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#0089BA', borderRadius: Platform.OS == 'android'? 30:20, overflow: 'hidden', textAlign: 'center', }}>Done</Text>
       </TouchableOpacity>
 
       {/* Filler space */}

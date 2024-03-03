@@ -253,7 +253,7 @@ const Interests = () => {
           }}
           style={{}}
         >
-          <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#DCADAD', borderRadius: Platform.OS == 'android' ? 30 : 20, textAlign: 'center', overflow: 'hidden', }}>Back</Text>
+          <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#DCADAD', borderRadius: Platform.OS == 'android' ? 30 : 20, textAlign: 'center', overflow: 'hidden', }}>Done</Text>
         </TouchableOpacity>
       </Animated.View>
     </>

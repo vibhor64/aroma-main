@@ -214,181 +214,183 @@ const TraitScreen = () => {
   return (
     <ScrollView >
       <View style={{ padding: 20, paddingTop: 30, backgroundColor: '#fff', }}>
-      <Image source={require('../../assets/icons/login page/s2.jpg')} style={{width: 35, height: 35,marginLeft: 4}} /> 
-      <Image source={require('../../assets/icons/login page/h3.jpg')} style={{width: 45, height: 45,position: 'absolute', right: -5, top: 310}} /> 
-      <Image source={require('../../assets/icons/login page/s3.jpg')} style={{width: 25, height: 25,position: 'absolute', left: 4, bottom: Platform.OS == 'android' ? 300 : 450}} /> 
-      <Text style={{ fontSize: 32, fontFamily: 'Poppins_700Bold', color: '#E23DA0' }}>About You</Text>
-      <Text style={{ fontSize: 12, fontFamily: 'Poppins_600SemiBold', color: '#000' }}>This might help us find the right match for you!</Text>
+        <Image source={require('../../assets/icons/login page/s2.jpg')} style={{ width: 35, height: 35, marginLeft: 4 }} />
+        <Image source={require('../../assets/icons/login page/h3.jpg')} style={{ width: 45, height: 45, position: 'absolute', right: -5, top: 310 }} />
+        <Image source={require('../../assets/icons/login page/s3.jpg')} style={{ width: 25, height: 25, position: 'absolute', left: 4, bottom: Platform.OS == 'android' ? 210 : 450 }} />
+        <Text style={{ fontSize: 32, fontFamily: 'Poppins_700Bold', color: '#E23DA0' }}>About You</Text>
+        <Text style={{ fontSize: 12, fontFamily: 'Poppins_600SemiBold', color: '#000' }}>This might help us find the right match for you!</Text>
 
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Branch</Text>
-      <TextInput
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Branch</Text> */}
+        <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000', }}
-        value={traits.branch}
-        onSubmitEditing={(event) => updateBranch(event.nativeEvent.text)}
-        onChangeText={(text) => updateBranch(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderLeftWidth: 1 }}
+          value={traits.branch}
+          onSubmitEditing={(event) => updateBranch(event.nativeEvent.text)}
+          onChangeText={(text) => updateBranch(text)}
+          placeholder="Branch"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Hometown</Text>
-      <TextInput
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Hometown</Text> */}
+        <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000', }}
-        value={traits.hometown}
-        onSubmitEditing={(event) => updateHometown(event.nativeEvent.text)}
-        onChangeText={(text) => updateHometown(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderRightWidth: 1 }}
+          value={traits.hometown}
+          onSubmitEditing={(event) => updateHometown(event.nativeEvent.text)}
+          onChangeText={(text) => updateHometown(text)}
+          placeholder="Hometown"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Religion</Text>
-      <TextInput
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000',}}
-        value={traits.religion}
-        onSubmitEditing={(event) => updateReligion(event.nativeEvent.text)}
-        onChangeText={(text) => updateReligion(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Religion</Text> */}
+        <TextInput
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderLeftWidth: 1 }}
+          value={traits.religion}
+          onSubmitEditing={(event) => updateReligion(event.nativeEvent.text)}
+          onChangeText={(text) => updateReligion(text)}
+          placeholder="Religion"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Ethnicity</Text>
-      <TextInput
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Ethnicity</Text> */}
+        <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 20, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000e', }}
-        value={traits.ethnicity}
-        onSubmitEditing={(event) => updateEthnicity(event.nativeEvent.text)}
-        onChangeText={(text) => updateEthnicity(text)}
-        placeholder=""
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderTopWidth: 1, borderColor: '#E23DA0', borderRightWidth: 1 }}
+          value={traits.ethnicity}
+          onSubmitEditing={(event) => updateEthnicity(event.nativeEvent.text)}
+          onChangeText={(text) => updateEthnicity(text)}
+          placeholder="Ethnicity"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Exercise</Text>
-      <Picker
-        selectedValue={exercise}
-        style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        onValueChange={(itemValue, itemIndex) => {
-          updateExercise(itemValue);
-        }
-        }>
-        <Picker.Item label="" value="" color="#999" />
-        <Picker.Item label="Always" value="Always" color="#999" />
-        <Picker.Item label="Occasionally" value="Occasionally" color="#999" />
-        <Picker.Item label="Never" value="Never" color="#999" />
-      </Picker>
+        <TextInput
 
+          style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 25, width: '90%', fontFamily: 'Poppins_600SemiBold', color: '#000', borderBottomWidth: 1, borderColor: '#E23DA0', borderLeftWidth: 1 }}
+          value={traits.languages}
+          onSubmitEditing={(event) => updateLanguages(event.nativeEvent.text)}
+          onChangeText={(text) => updateLanguages(text)}
+          placeholder="Languages"
+          placeholderTextColor="gray"
+          maxLength={28}
+        />
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Sexual Orientation</Text>
-      <Picker
-      style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        selectedValue={sorientation}
-        onValueChange={(itemValue, itemIndex) => {
-          updateSexualOrientation(itemValue);
-        }
-        }>
-        <Picker.Item label="N/A" value="N/A" color="#999" />
-        <Picker.Item label="Straight" value="Straight" color="#999" />
-        <Picker.Item label="Bisexual" value="Bisexual" color="#999" />
-        <Picker.Item label="Gay" value="Gay" color="#999" />
-        <Picker.Item label="Lesbian" value="Lesbian" color="#999" />
-        <Picker.Item label="LGBTQ+" value="LGBTQ+" color="#999" />
-        <Picker.Item label="Pansexual" value="Pansexual" color="#999" />
-        <Picker.Item label="Asexual" value="Asexual" color="#999" />
-      </Picker>
-
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Height</Text>
-      <Picker
-      style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        selectedValue={height}
-        onValueChange={(itemValue, itemIndex) => {
-          updateHeight(itemValue);
-        }
-        }>
-        {heightOptions.map((option, index) => (
-          <Picker.Item key={index} label={option} value={option} color="#999" />
-        ))}
-      </Picker>
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Exercise</Text>
+        <Picker
+          selectedValue={exercise}
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10, overflow: 'hidden' }}
+          onValueChange={(itemValue, itemIndex) => {
+            updateExercise(itemValue);
+          }
+          }>
+          <Picker.Item label="" value="" color="#999" />
+          <Picker.Item label="Always" value="Always" color="#999" />
+          <Picker.Item label="Occasionally" value="Occasionally" color="#999" />
+          <Picker.Item label="Never" value="Never" color="#999" />
+        </Picker>
 
 
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Sexual Orientation</Text>
+        <Picker
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10 }}
+          selectedValue={sorientation}
+          onValueChange={(itemValue, itemIndex) => {
+            updateSexualOrientation(itemValue);
+          }
+          }>
+          <Picker.Item label="N/A" value="N/A" color="#999" />
+          <Picker.Item label="Straight" value="Straight" color="#999" />
+          <Picker.Item label="Bisexual" value="Bisexual" color="#999" />
+          <Picker.Item label="Gay" value="Gay" color="#999" />
+          <Picker.Item label="Lesbian" value="Lesbian" color="#999" />
+          <Picker.Item label="LGBTQ+" value="LGBTQ+" color="#999" />
+          <Picker.Item label="Pansexual" value="Pansexual" color="#999" />
+          <Picker.Item label="Asexual" value="Asexual" color="#999" />
+        </Picker>
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Drink</Text>
-      <Picker
-      style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        selectedValue={drink}
-        onValueChange={(itemValue, itemIndex) => {
-          updateDrink(itemValue);
-        }
-        }>
-        <Picker.Item label="Frequently" value="Frequently" color="#999" />
-        <Picker.Item label="Occasionally" value="Occasionally" color="#999" />
-        <Picker.Item label="Never" value="Never" color="#999" />
-      </Picker>
-
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Smoke</Text>
-      <Picker
-      style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        selectedValue={smoke}
-        onValueChange={(itemValue, itemIndex) => {
-          updateSmoke(itemValue);
-        }
-        }>
-        <Picker.Item label="Frequently" value="Frequently" color="#999" />
-        <Picker.Item label="Occasionally" value="Occasionally" color="#999" />
-        <Picker.Item label="Never" value="Never" color="#999" />
-      </Picker>
-
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Zodiac</Text>
-      <Picker
-      style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        selectedValue={zodiac}
-        onValueChange={(itemValue, itemIndex) => {
-          updateZodiac(itemValue);
-        }
-        }>
-        {zodiacOptions.map((option, index) => (
-          <Picker.Item key={index} label={option} value={option} color="#999" />
-        ))}
-      </Picker>
-
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Looking for</Text>
-      <Picker
-      style={{backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10}}
-        selectedValue={relationshipType}
-        onValueChange={(itemValue, itemIndex) => {
-          updateRelationshipType(itemValue);
-        }
-        }>
-        <Picker.Item label="Don't know yet" value="Don't know yet" color="#999" />
-        <Picker.Item label="Short-term" value="Short-term" color="#999" />
-        <Picker.Item label="Long-term" value="Long-term" color="#999" />
-        <Picker.Item label="Short-term, open to long-term" value="Short-term, open to long-term" color="#999" />
-        <Picker.Item label="Long-term, open to short-term" value="Long-term, open to short-term" color="#999" />
-      </Picker>
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Height</Text>
+        <Picker
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10 }}
+          selectedValue={height}
+          onValueChange={(itemValue, itemIndex) => {
+            updateHeight(itemValue);
+          }
+          }>
+          {heightOptions.map((option, index) => (
+            <Picker.Item key={index} label={option} value={option} color="#999" />
+          ))}
+        </Picker>
 
 
-      <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Languages</Text>
-      <TextInput
 
-        style={{ height: 40, marginHorizontal: 20, paddingHorizontal: 10, borderRadius: 0, marginTop: 5, width: '90%', backgroundColor: '#E8E8E8', fontFamily: 'Poppins_600SemiBold', color: '#000', overflow: 'hidden', textAlign: 'center', }}
-        value={traits.languages}
-        onSubmitEditing={(event) => updateLanguages(event.nativeEvent.text)}
-        onChangeText={(text) => updateLanguages(text)}
-        placeholder="Seperate with comma"
-        placeholderTextColor="gray"
-        maxLength={28}
-      />
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Drink</Text>
+        <Picker
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10 }}
+          selectedValue={drink}
+          onValueChange={(itemValue, itemIndex) => {
+            updateDrink(itemValue);
+          }
+          }>
+          <Picker.Item label="Frequently" value="Frequently" color="#999" />
+          <Picker.Item label="Occasionally" value="Occasionally" color="#999" />
+          <Picker.Item label="Never" value="Never" color="#999" />
+        </Picker>
 
-      <TouchableOpacity activeOpacity={0.4} style={{marginTop: 50, alignSelf: 'center', width: '90%' }} onPress={() => { navigation.navigate('Interests') }}>
-        <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#0089BA', borderRadius: Platform.OS == 'android'? 30:20, overflow: 'hidden', textAlign: 'center', }}>Nexttt ⏭️</Text>
-      </TouchableOpacity>
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Smoke</Text>
+        <Picker
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10 }}
+          selectedValue={smoke}
+          onValueChange={(itemValue, itemIndex) => {
+            updateSmoke(itemValue);
+          }
+          }>
+          <Picker.Item label="Frequently" value="Frequently" color="#999" />
+          <Picker.Item label="Occasionally" value="Occasionally" color="#999" />
+          <Picker.Item label="Never" value="Never" color="#999" />
+        </Picker>
 
-      {/* Filler space */}
-      <View style={{ flex: 1, height: 30 }}></View>
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Zodiac</Text>
+        <Picker
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10 }}
+          selectedValue={zodiac}
+          onValueChange={(itemValue, itemIndex) => {
+            updateZodiac(itemValue);
+          }
+          }>
+          {zodiacOptions.map((option, index) => (
+            <Picker.Item key={index} label={option} value={option} color="#999" />
+          ))}
+        </Picker>
+
+        <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Looking for</Text>
+        <Picker
+          style={{ backgroundColor: '#E8E8E8', borderRadius: 20, marginTop: 10 }}
+          selectedValue={relationshipType}
+          onValueChange={(itemValue, itemIndex) => {
+            updateRelationshipType(itemValue);
+          }
+          }>
+          <Picker.Item label="Don't know yet" value="Don't know yet" color="#999" />
+          <Picker.Item label="Short-term" value="Short-term" color="#999" />
+          <Picker.Item label="Long-term" value="Long-term" color="#999" />
+          <Picker.Item label="Short-term, open to long-term" value="Short-term, open to long-term" color="#999" />
+          <Picker.Item label="Long-term, open to short-term" value="Long-term, open to short-term" color="#999" />
+        </Picker>
+
+
+        {/* <Text style={{ fontFamily: 'Poppins_600SemiBold', color: '#E23DA0', marginTop: 20, textAlign: 'center' }}>Languages</Text> */}
+
+
+        <TouchableOpacity activeOpacity={0.4} style={{ marginTop: 50, alignSelf: 'center', width: '90%' }} onPress={() => { navigation.navigate('Interests') }}>
+          <Text style={{ paddingHorizontal: 20, paddingVertical: 10, fontSize: 12, fontFamily: 'Poppins_800ExtraBold', color: '#fff', backgroundColor: '#0089BA', borderRadius: Platform.OS == 'android' ? 30 : 20, overflow: 'hidden', textAlign: 'center', }}>Nexttt ⏭️</Text>
+        </TouchableOpacity>
+
+        {/* Filler space */}
+        <View style={{ flex: 1, height: 30 }}></View>
 
       </View>
     </ScrollView>
